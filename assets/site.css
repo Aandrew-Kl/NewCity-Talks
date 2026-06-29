@@ -1,15 +1,15 @@
   :root{
-    --ink:#16130F;
-    --ink-soft:#3a352d;
-    --ink-mute:#6b6356;
-    --paper:#F7F3E9;
-    --paper-2:#efe9da;
-    --paper-3:#e7dfcb;
-    --accent:#A23A2B;
-    --accent-dark:#7e2c20;
-    --line:#cdc4ae;
-    --line-strong:#16130F;
-    --white:#fffdf7;
+    --ink:#141821;
+    --ink-soft:#37404f;
+    --ink-mute:#646e80;
+    --paper:#F4F5F2;
+    --paper-2:#eaece8;
+    --paper-3:#dfe2db;
+    --accent:#284B7A;
+    --accent-dark:#1D3A60;
+    --line:#c4c9c2;
+    --line-strong:#141821;
+    --white:#fffffc;
     --serif:'Fraunces',Georgia,'Times New Roman',serif;
     --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     --mono:'IBM Plex Mono',ui-monospace,monospace;
