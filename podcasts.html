@@ -3,75 +3,62 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Podcasts — CITY TALKS · Ηχογραφημένοι διάλογοι για την Τοπική Αυτοδιοίκηση</title>
-<meta name="description" content="Τα podcasts του CITY TALKS: ηχογραφημένοι διάλογοι και μονόλογοι για την Τοπική Αυτοδιοίκηση και τις Έξυπνες Πόλεις, με αιρετούς, στελέχη και ειδικούς των Δήμων." />
+<title>Podcasts — CITY TALKS · Έρχεται σύντομα</title>
+<meta name="description" content="Τα podcasts του CITY TALKS έρχονται σύντομα: ηχογραφημένοι διάλογοι για την Τοπική Αυτοδιοίκηση και τις Έξυπνες Πόλεις. Άφησε το email σου για να μάθεις πρώτος πότε βγαίνει το πρώτο επεισόδιο." />
 <link rel="icon" type="image/png" href="public/logo/city-talks-mark-purple.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site.css" />
 <style>
-  /* ---------- PODCASTS PAGE (page-scoped) ---------- */
+  /* ---------- PODCASTS PAGE (coming soon, page-scoped) ---------- */
   .pod-pagehead{border-bottom:3px double var(--ink);padding:clamp(40px,5vw,72px) 0 clamp(34px,4vw,52px);}
   .pod-pagehead .ph-kicker{margin-bottom:20px;}
   .pod-pagehead h1{font-size:clamp(44px,7vw,92px);font-weight:600;line-height:.96;letter-spacing:-.02em;}
   .pod-pagehead h1 em{font-style:italic;color:var(--accent);font-weight:500;}
-  .pod-pagehead .ph-standfirst{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.1vw,25px);color:var(--ink-soft);max-width:36ch;line-height:1.34;margin:18px 0 0;}
+  .pod-pagehead .ph-standfirst{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.1vw,25px);color:var(--ink-soft);max-width:40ch;line-height:1.34;margin:18px 0 0;}
 
-  /* subscribe row */
-  .pod-subscribe{display:flex;align-items:center;flex-wrap:wrap;gap:18px 26px;border-top:1px solid var(--ink);margin-top:34px;padding-top:22px;}
-  .pod-subscribe .ps-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);}
-  .pod-sublinks{display:flex;flex-wrap:wrap;gap:12px 14px;}
-  .pod-sublinks a{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:13.5px;letter-spacing:.01em;border:1.5px solid var(--ink);padding:.55em 1em;border-radius:2px;transition:all .18s ease;}
-  .pod-sublinks a:hover{background:var(--ink);color:var(--paper);}
-  .pod-sublinks a svg{width:15px;height:15px;}
+  /* coming-soon panel */
+  .pod-soon{padding:clamp(48px,6vw,80px) 0 0;}
+  .pod-soon-panel{position:relative;border:1px solid var(--ink);background:var(--ink);color:var(--paper);overflow:hidden;padding:clamp(40px,6vw,84px) clamp(26px,5vw,72px);}
+  .pod-soon-panel .ps-bg{position:absolute;inset:0;z-index:0;}
+  .pod-soon-panel .ps-bg img{width:100%;height:100%;object-fit:cover;opacity:.16;filter:grayscale(.4) contrast(1.05);}
+  .pod-soon-panel::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(108,44,145,.5),rgba(22,19,15,.62));mix-blend-mode:multiply;}
+  .pod-soon-inner{position:relative;z-index:2;max-width:62ch;}
+  .pod-soon-badge{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);border:1px solid rgba(247,243,233,.32);padding:7px 13px;border-radius:2px;margin-bottom:26px;}
+  .pod-soon-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(108,44,145,.4);}
+  .pod-soon-panel h2{font-size:clamp(30px,4.6vw,58px);font-weight:600;color:var(--paper);line-height:1.02;letter-spacing:-.02em;}
+  .pod-soon-panel h2 em{font-style:italic;color:#caa6e0;font-weight:500;}
+  .pod-soon-panel .ps-text{font-size:clamp(15.5px,1.7vw,18px);line-height:1.62;color:#ded4e6;margin:22px 0 30px;max-width:56ch;}
+  .pod-notify{display:flex;flex-wrap:wrap;gap:12px;max-width:500px;}
+  .pod-notify input{flex:1 1 220px;background:rgba(247,243,233,.08);border:1px solid rgba(247,243,233,.3);color:var(--paper);font-family:var(--sans);font-size:15px;padding:.85em 1em;border-radius:2px;}
+  .pod-notify input::placeholder{color:#a99cb5;}
+  .pod-notify input:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .pod-notify button{background:var(--accent);border:1.5px solid var(--accent);color:var(--white);font-family:var(--sans);font-weight:600;font-size:14.5px;padding:.85em 1.4em;border-radius:2px;cursor:pointer;transition:background .2s;white-space:nowrap;}
+  .pod-notify button:hover{background:var(--accent-dark);}
+  .pod-soon-status{min-height:1.2em;margin:12px 0 0;font-size:13.5px;color:#caa6e0;}
+  .pod-soon-platforms{display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(247,243,233,.16);}
+  .pod-soon-platforms .pl-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a99cb5;}
+  .pod-soon-platforms .pl-list{display:flex;flex-wrap:wrap;gap:8px 16px;}
+  .pod-soon-platforms .pl-list span{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-weight:600;font-size:13px;color:#ded4e6;opacity:.85;}
+  .pod-soon-platforms .pl-list svg{width:15px;height:15px;}
 
-  /* hero / featured episode */
-  .pod-hero{padding:clamp(48px,6vw,80px) 0 0;}
-  .pod-feat{display:grid;grid-template-columns:1fr 1.05fr;gap:0;border:1px solid var(--ink);background:var(--ink);color:var(--paper);overflow:hidden;}
-  .pod-feat-media{position:relative;min-height:340px;overflow:hidden;background:#0f0d0a;}
-  .pod-feat-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) contrast(1.08) sepia(.16);opacity:.9;}
-  .pod-feat-media::after{content:"";position:absolute;inset:0;background:linear-gradient(140deg,rgba(162,58,43,.22),rgba(22,19,15,.5));mix-blend-mode:multiply;}
-  .pod-feat-badge{position:absolute;left:18px;top:18px;z-index:2;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:rgba(22,19,15,.7);padding:7px 12px;border-left:2px solid var(--accent);}
-  .pod-feat-body{padding:clamp(28px,3.5vw,48px);display:flex;flex-direction:column;justify-content:center;}
-  .pod-feat-body .pf-cat{color:#e8a092;margin-bottom:16px;}
-  .pod-feat-body h2{font-size:clamp(28px,3.6vw,46px);font-weight:600;color:var(--paper);line-height:1.04;letter-spacing:-.02em;}
-  .pod-feat-guest{display:flex;align-items:center;gap:13px;margin:22px 0 18px;}
-  .pod-feat-guest img{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);filter:grayscale(.35) contrast(1.06);}
-  .pod-feat-guest .pfg-name{font-family:var(--sans);font-weight:700;font-size:15px;line-height:1.2;color:var(--paper);}
-  .pod-feat-guest .pfg-role{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#bcb19c;margin-top:4px;}
-  .pod-feat-blurb{font-size:16px;line-height:1.6;color:#d9cfb9;max-width:48ch;margin:0 0 28px;}
-  .pod-feat-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-  .pod-feat-play{display:inline-flex;align-items:center;gap:11px;background:var(--accent);border:1.5px solid var(--accent);color:var(--white);font-family:var(--sans);font-weight:600;font-size:14.5px;padding:.7em 1.3em;border-radius:2px;cursor:pointer;transition:background .2s;}
-  .pod-feat-play:hover{background:var(--accent-dark);}
-  .pod-feat-play svg{width:16px;height:16px;margin-left:1px;}
-  .pod-feat-dur{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#bcb19c;}
-  @media(max-width:880px){.pod-feat{grid-template-columns:1fr;}.pod-feat-media{min-height:240px;order:1;}.pod-feat-body{order:2;}}
+  /* what to expect — themes (not episodes) */
+  .pod-themes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:6px;}
+  .pod-theme{background:var(--paper);padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;transition:background .18s;}
+  .pod-theme:hover{background:var(--white);}
+  .pod-theme .pt-ic{width:30px;height:30px;color:var(--accent);}
+  .pod-theme h3{font-family:var(--serif);font-size:clamp(18px,2vw,22px);font-weight:600;line-height:1.12;letter-spacing:-.01em;}
+  .pod-theme p{font-size:14px;line-height:1.55;color:var(--ink-soft);}
+  @media(max-width:900px){.pod-themes-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.pod-themes-grid{grid-template-columns:1fr;}}
 
-  /* episode list */
-  .pod-eps{border-top:1px solid var(--ink);}
-  .pod-epcard{display:grid;grid-template-columns:auto auto 1fr auto;gap:clamp(18px,2.5vw,32px);align-items:center;padding:clamp(22px,3vw,34px) 4px;border-bottom:1px solid var(--line);transition:background .18s,padding-left .2s;}
-  .pod-epcard:hover{background:var(--white);padding-left:14px;}
-  .pod-ep-num{font-family:var(--serif);font-size:clamp(30px,4vw,52px);font-weight:700;color:var(--accent);line-height:1;letter-spacing:-.02em;align-self:flex-start;}
-  .pod-ep-thumb{position:relative;width:84px;height:84px;flex-shrink:0;}
-  .pod-ep-thumb img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid var(--ink);filter:grayscale(.35) contrast(1.06) sepia(.08);}
-  .pod-ep-main{min-width:0;}
-  .pod-ep-cat{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);}
-  .pod-ep-title{font-family:var(--serif);font-size:clamp(21px,2.6vw,30px);font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:6px 0 8px;}
-  .pod-ep-guest{font-size:14px;color:var(--ink-soft);}
-  .pod-ep-guest b{font-weight:700;color:var(--ink);}
-  .pod-ep-blurb{font-size:14.5px;color:var(--ink-soft);line-height:1.55;margin:10px 0 0;max-width:62ch;}
-  .pod-ep-side{display:flex;flex-direction:column;align-items:flex-end;gap:14px;flex-shrink:0;}
-  .pod-ep-dur{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-mute);white-space:nowrap;}
-  .pod-ep-play{width:52px;height:52px;border-radius:50%;background:var(--ink);color:var(--paper);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:background .2s,transform .2s;}
-  .pod-epcard:hover .pod-ep-play{background:var(--accent);transform:scale(1.06);}
-  .pod-ep-play svg{width:18px;height:18px;margin-left:3px;}
-  @media(max-width:760px){
-    .pod-epcard{grid-template-columns:auto 1fr;gap:16px;row-gap:14px;align-items:start;}
-    .pod-ep-thumb{display:none;}
-    .pod-ep-side{grid-column:1 / -1;flex-direction:row;justify-content:space-between;align-items:center;width:100%;border-top:1px solid var(--line);padding-top:14px;}
-  }
-  @media(max-width:420px){.pod-ep-num{font-size:30px;}}
+  /* guest CTA */
+  .pod-guestcta{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;border:1px solid var(--ink);padding:clamp(28px,4vw,52px);background:var(--paper-2);}
+  .pod-guestcta h2{font-size:clamp(24px,3vw,38px);font-weight:600;line-height:1.05;letter-spacing:-.01em;}
+  .pod-guestcta p{font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin:14px 0 0;max-width:52ch;}
+  .pod-guestcta-actions{display:flex;flex-direction:column;gap:12px;}
+  @media(max-width:760px){.pod-guestcta{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -137,143 +124,86 @@
     <div class="ph-kicker"><span class="kicker">Ήχος</span></div>
     <h1>Pod<em>casts</em></h1>
     <p class="ph-standfirst">Ηχογραφημένοι διάλογοι και μονόλογοι για την Τοπική Αυτοδιοίκηση — όσα δεν χωρούν σε ένα άρθρο, με τις φωνές των ανθρώπων που κυβερνούν τους Δήμους.</p>
-
-    <div class="pod-subscribe">
-      <span class="ps-label">Άκουσέ μας στο</span>
-      <div class="pod-sublinks">
-        <a href="https://open.spotify.com/show/citytalks" aria-label="Άκουσε το City Talks στο Spotify">
-          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.4a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.63.63 0 0 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11.3.18.39.58.21.86zm1.23-2.74a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.56 11.23 1.33.37.23.49.71.26 1.07zm.11-2.85C14.84 8.96 9.5 8.78 6.42 9.71a.94.94 0 1 1-.54-1.8c3.53-1.07 9.43-.86 13.15 1.35a.94.94 0 0 1-.96 1.61z"/></svg>
-          Spotify
-        </a>
-        <a href="https://podcasts.apple.com/podcast/citytalks" aria-label="Άκουσε το City Talks στο Apple Podcasts">
-          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-2 19.8v-3.5a2 2 0 0 1-1-1.7c0-1.6 1.3-3 3-3s3 1.4 3 3a2 2 0 0 1-1 1.7v3.5A10 10 0 0 0 12 2zm0 5a4 4 0 0 1 4 4 4 4 0 0 1-1.3 3 .9.9 0 0 1-1.2-1.3A2.2 2.2 0 0 0 14.2 11 2.2 2.2 0 0 0 12 8.8 2.2 2.2 0 0 0 9.8 11c0 .7.3 1.3.8 1.7A.9.9 0 0 1 9.3 14 4 4 0 0 1 8 11a4 4 0 0 1 4-4zm0 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
-          Apple Podcasts
-        </a>
-        <a href="https://city-talks.gr/podcast/feed.xml" aria-label="Συνδρομή στο RSS feed του City Talks">
-          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 17.82a2.18 2.18 0 1 1-4.36 0 2.18 2.18 0 0 1 4.36 0zM2 11.27v3.06a6.67 6.67 0 0 1 6.67 6.67h3.06A9.73 9.73 0 0 0 2 11.27zM2 5.5v3.06A12.44 12.44 0 0 1 14.44 21h3.06C17.5 12.44 10.56 5.5 2 5.5z"/></svg>
-          RSS
-        </a>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- FEATURED / HERO EPISODE -->
-<section class="pod-hero">
+<!-- COMING SOON -->
+<section class="pod-soon">
   <div class="wrap">
-    <div class="pod-feat">
-      <div class="pod-feat-media">
-        <img src="public/hero/city-talks-04-urban-smart-cities.jpg" alt="Αστικό τοπίο έξυπνης πόλης κατά τη διάρκεια του επεισοδίου" />
-        <span class="pod-feat-badge">Επεισόδιο 01 · Νέο</span>
-      </div>
-      <div class="pod-feat-body">
-        <span class="kicker pf-cat">Smart Cities · Επεισόδιο της εβδομάδας</span>
-        <h2>Έξυπνες πόλεις στην πράξη</h2>
-        <div class="pod-feat-guest">
-          <img src="public/guests/Ioannis-Karagiannis-0.jpg" alt="Ιωάννης Καραγιάννης" />
-          <div>
-            <div class="pfg-name">με τον <a href="arthrografoi.html" style="border-bottom:1px solid var(--accent);">Ιωάννη Καραγιάννη</a></div>
-            <div class="pfg-role">ΗΔΙΚΑ Α.Ε. — Ψηφιακή Υγεία</div>
+    <div class="pod-soon-panel">
+      <div class="ps-bg"><img src="public/hero/city-talks-04-urban-smart-cities.jpg" alt="" aria-hidden="true" /></div>
+      <div class="pod-soon-inner">
+        <span class="pod-soon-badge"><span class="dot" aria-hidden="true"></span> Σε παραγωγή · Coming soon</span>
+        <h2>Το πρώτο επεισόδιο <em>έρχεται σύντομα.</em></h2>
+        <p class="ps-text">Ετοιμάζουμε τις πρώτες ηχογραφημένες συζητήσεις με αιρετούς, στελέχη και ειδικούς της Αυτοδιοίκησης. Άφησε το email σου και θα είσαι από τους πρώτους που θα μάθουν πότε βγαίνει το πρώτο επεισόδιο του City Talks.</p>
+        <form class="pod-notify" aria-label="Ειδοποίηση για το πρώτο επεισόδιο" onsubmit="document.getElementById('notify-status').textContent='Ευχαριστούμε! Θα σ’ ειδοποιήσουμε μόλις βγει το πρώτο επεισόδιο.';this.reset();return false;">
+          <label for="notify-email" class="skip">Το email σου</label>
+          <input id="notify-email" type="email" required placeholder="Το email σου" autocomplete="email" />
+          <button type="submit">Ειδοποίησέ με</button>
+        </form>
+        <p class="pod-soon-status" id="notify-status" role="status" aria-live="polite"></p>
+        <div class="pod-soon-platforms">
+          <span class="pl-label">Θα μας βρεις σε</span>
+          <div class="pl-list">
+            <span><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.4a.62.62 0 0 1-.86.21c-2.35-1.44-5.3-1.76-8.79-.96a.63.63 0 0 1-.28-1.22c3.81-.87 7.08-.5 9.72 1.11.3.18.39.58.21.86zm1.23-2.74a.78.78 0 0 1-1.07.26c-2.69-1.65-6.79-2.13-9.97-1.17a.78.78 0 1 1-.45-1.49c3.63-1.1 8.15-.56 11.23 1.33.37.23.49.71.26 1.07zm.11-2.85C14.84 8.96 9.5 8.78 6.42 9.71a.94.94 0 1 1-.54-1.8c3.53-1.07 9.43-.86 13.15 1.35a.94.94 0 0 1-.96 1.61z"/></svg> Spotify</span>
+            <span><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-2 19.8v-3.5a2 2 0 0 1-1-1.7c0-1.6 1.3-3 3-3s3 1.4 3 3a2 2 0 0 1-1 1.7v3.5A10 10 0 0 0 12 2zm0 5a4 4 0 0 1 4 4 4 4 0 0 1-1.3 3 .9.9 0 0 1-1.2-1.3A2.2 2.2 0 0 0 14.2 11 2.2 2.2 0 0 0 12 8.8 2.2 2.2 0 0 0 9.8 11c0 .7.3 1.3.8 1.7A.9.9 0 0 1 9.3 14 4 4 0 0 1 8 11a4 4 0 0 1 4-4zm0 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg> Apple Podcasts</span>
+            <span><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 17.82a2.18 2.18 0 1 1-4.36 0 2.18 2.18 0 0 1 4.36 0zM2 11.27v3.06a6.67 6.67 0 0 1 6.67 6.67h3.06A9.73 9.73 0 0 0 2 11.27zM2 5.5v3.06A12.44 12.44 0 0 1 14.44 21h3.06C17.5 12.44 10.56 5.5 2 5.5z"/></svg> RSS</span>
           </div>
         </div>
-        <p class="pod-feat-blurb">Από τη θεωρία στην καθημερινότητα του πολίτη: πώς ένας Δήμος περνά από τα pilot σε πραγματικές ψηφιακές υπηρεσίες, ποια είναι τα εμπόδια στη διαλειτουργικότητα και γιατί η ψηφιακή δημόσια υγεία είναι το επόμενο μεγάλο στοίχημα της αυτοδιοίκησης.</p>
-        <div class="pod-feat-actions">
-          <button class="pod-feat-play" type="button" aria-label="Αναπαραγωγή επεισοδίου: Έξυπνες πόλεις στην πράξη">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            Αναπαραγωγή
-          </button>
-          <span class="pod-feat-dur">38 λεπτά</span>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EPISODE LIST -->
+<!-- WHAT TO EXPECT -->
 <section class="sec">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <span class="kicker ink">Όλα τα επεισόδια</span>
-        <h2 style="margin-top:10px;">Η σειρά</h2>
+        <span class="kicker ink">Τι θα ακούσεις</span>
+        <h2 style="margin-top:10px;">Οι θεματικές μας</h2>
       </div>
-      <a class="seclink" href="steile-apopsi.html">Πρότεινε θέμα
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
     </div>
-
-    <div class="pod-eps">
-      <!-- EP 01 -->
-      <article class="pod-epcard">
-        <div class="pod-ep-num">01</div>
-        <div class="pod-ep-thumb"><img src="public/guests/Ioannis-Karagiannis-0.jpg" alt="Ιωάννης Καραγιάννης" /></div>
-        <div class="pod-ep-main">
-          <span class="pod-ep-cat">Smart Cities</span>
-          <h3 class="pod-ep-title">Έξυπνες πόλεις στην πράξη</h3>
-          <div class="pod-ep-guest">με τον <b><a href="arthrografoi.html">Ιωάννη Καραγιάννη</a></b> · ΗΔΙΚΑ Α.Ε.</div>
-          <p class="pod-ep-blurb">Πώς περνάμε από τα πιλοτικά προγράμματα στις πραγματικές ψηφιακές υπηρεσίες, και τι σημαίνει διαλειτουργικότητα για έναν μέσο ελληνικό Δήμο.</p>
-        </div>
-        <div class="pod-ep-side">
-          <span class="pod-ep-dur">38′</span>
-          <button class="pod-ep-play" type="button" aria-label="Αναπαραγωγή επεισοδίου 01: Έξυπνες πόλεις στην πράξη">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
+    <div class="pod-themes-grid">
+      <article class="pod-theme">
+        <svg class="pt-ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l5-3v17M19 21V11l-5-3M9 9h.01M9 13h.01M9 17h.01"/></svg>
+        <h3>Έξυπνες πόλεις</h3>
+        <p>Ψηφιακές υπηρεσίες, δεδομένα και καινοτομία στην καθημερινότητα του Δήμου.</p>
       </article>
-
-      <!-- EP 02 -->
-      <article class="pod-epcard">
-        <div class="pod-ep-num">02</div>
-        <div class="pod-ep-thumb"><img src="public/guests/patty-0001.jpg" alt="Πάττη Πασχαλίδου" /></div>
-        <div class="pod-ep-main">
-          <span class="pod-ep-cat">Opinions · Περιβάλλον</span>
-          <h3 class="pod-ep-title">Νερό, κλίμα και Δήμοι</h3>
-          <div class="pod-ep-guest">με την <b><a href="arthrografoi.html">Πάττη Πασχαλίδου</a></b> · Δημοτική Σύμβουλος Θερμαϊκού</div>
-          <p class="pod-ep-blurb">Η διαχείριση των υδάτινων πόρων ως δείκτης ποιότητας ζωής — και η θέση των Δήμων στην πρώτη γραμμή της κλιματικής προσαρμογής.</p>
-        </div>
-        <div class="pod-ep-side">
-          <span class="pod-ep-dur">41′</span>
-          <button class="pod-ep-play" type="button" aria-label="Αναπαραγωγή επεισοδίου 02: Νερό, κλίμα και Δήμοι">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
+      <article class="pod-theme">
+        <svg class="pt-ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Ανθρώπινο δυναμικό</h3>
+        <p>Στελέχωση, κινητικότητα και οι άνθρωποι που κρατούν όρθιους τους Δήμους.</p>
       </article>
-
-      <!-- EP 03 -->
-      <article class="pod-epcard">
-        <div class="pod-ep-num">03</div>
-        <div class="pod-ep-thumb"><img src="public/guests/DimitrisPiatsarikas-002.jpg" alt="Δημήτρης Πατσιαρίκας" /></div>
-        <div class="pod-ep-main">
-          <span class="pod-ep-cat">Smart Cities · Ανάπτυξη</span>
-          <h3 class="pod-ep-title">Πράσινος τουρισμός &amp; τοπική ανάπτυξη</h3>
-          <div class="pod-ep-guest">με τον <b><a href="arthrografoi.html">Δημήτρη Πατσιαρίκα</a></b> · Αντιδήμαρχος Δίου-Ολύμπου</div>
-          <p class="pod-ep-blurb">Ο τουρισμός ως μοχλός βιώσιμης ανάπτυξης για τους μικρούς Δήμους: από τη διαχείριση απορριμμάτων μέχρι την προστασία του φυσικού κεφαλαίου.</p>
-        </div>
-        <div class="pod-ep-side">
-          <span class="pod-ep-dur">29′</span>
-          <button class="pod-ep-play" type="button" aria-label="Αναπαραγωγή επεισοδίου 03: Πράσινος τουρισμός και τοπική ανάπτυξη">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
+      <article class="pod-theme">
+        <svg class="pt-ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 3s-6-1-11 4-4 11-4 11 6 1 11-4 4-11 4-11ZM8.5 15.5 16 8"/></svg>
+        <h3>Περιβάλλον &amp; κλίμα</h3>
+        <p>Νερό, απορρίμματα και κλιματική προσαρμογή στην πρώτη γραμμή της αυτοδιοίκησης.</p>
       </article>
-
-      <!-- EP 04 -->
-      <article class="pod-epcard">
-        <div class="pod-ep-num">04</div>
-        <div class="pod-ep-thumb"><img src="public/guests/theodosis-ch-001.jpg" alt="Θεοδόσης Χατζηιωαννίδης" /></div>
-        <div class="pod-ep-main">
-          <span class="pod-ep-cat">Opinions · Ανθρώπινο δυναμικό</span>
-          <h3 class="pod-ep-title">Το ανθρώπινο δυναμικό των Δήμων</h3>
-          <div class="pod-ep-guest">με τον <b><a href="arthrografos-theodosis.html">Θεοδόση Χατζηιωαννίδη</a></b> · Οικονομολόγος, MBA</div>
-          <p class="pod-ep-blurb">Υποστελέχωση, κινητικότητα και το λεξιλόγιο μιας ζωής στην αυτοδιοίκηση: μια κουβέντα για τους ανθρώπους που κρατούν όρθιους τους Δήμους.</p>
-        </div>
-        <div class="pod-ep-side">
-          <span class="pod-ep-dur">45′</span>
-          <button class="pod-ep-play" type="button" aria-label="Αναπαραγωγή επεισοδίου 04: Το ανθρώπινο δυναμικό των Δήμων">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
+      <article class="pod-theme">
+        <svg class="pt-ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg>
+        <h3>Χρηματοδότηση &amp; ανάπτυξη</h3>
+        <p>Προγράμματα, επενδύσεις και τοπική ανάπτυξη για βιώσιμους Δήμους.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- GUEST CTA -->
+<section class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <div class="pod-guestcta">
+      <div>
+        <span class="kicker ink">Συμμετοχή</span>
+        <h2 style="margin-top:12px;">Θες να γίνεις καλεσμένος ή να προτείνεις θέμα;</h2>
+        <p>Αν υπηρετείς ή γνωρίζεις από κοντά την Αυτοδιοίκηση και έχεις κάτι να πεις, θα χαρούμε να σε ακούσουμε στον πρώτο κύκλο επεισοδίων.</p>
+      </div>
+      <div class="pod-guestcta-actions">
+        <a class="btn btn--accent" href="steile-apopsi.html">Πρότεινε θέμα / γίνε καλεσμένος
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+      </div>
     </div>
   </div>
 </section>
@@ -282,7 +212,7 @@
 <section class="quote">
   <div class="wrap">
     <blockquote><span class="mark">«</span>Όσα δεν χωρούν σε ένα άρθρο.<span class="mark">»</span></blockquote>
-    <cite>City Talks Podcasts — Η συζήτηση για την Αυτοδιοίκηση, με φωνή</cite>
+    <cite>City Talks Podcasts — Έρχεται σύντομα</cite>
   </div>
 </section>
 
@@ -343,7 +273,6 @@
     var isOpen=false;
     var mq=window.matchMedia('(max-width:980px)');
 
-    // Make off-canvas panel unreachable to keyboard/SR when closed (only at mobile widths).
     function syncInert(){
       if(mq.matches && !isOpen){
         nav.setAttribute('aria-hidden','true');
@@ -394,7 +323,6 @@
       }
     });
 
-    // Re-sync when crossing the breakpoint (e.g. resize from mobile to desktop while open).
     (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){
       if(!mq.matches&&isOpen)shut(false);
       syncInert();
