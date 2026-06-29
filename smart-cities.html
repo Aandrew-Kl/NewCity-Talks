@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smart Cities — Έξυπνες Πόλεις | CITY TALKS</title>
+<meta name="description" content="Smart Cities: η τεχνολογία στην υπηρεσία της τοπικής αυτοδιοίκησης. Ψηφιακή δημόσια υγεία, βιώσιμη διαχείριση απορριμμάτων, πράσινος τουρισμός και πλατφόρμες προστασίας του αστικού περιβάλλοντος." />
+<link rel="icon" type="image/png" href="public/logo/city-talks-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  /* ===== Page-scoped: Smart Cities category ===== */
+  .sc-hero{position:relative;overflow:hidden;background:var(--ink);color:var(--paper);border-bottom:3px double var(--ink);}
+  .sc-hero-bg{position:absolute;inset:0;z-index:0;}
+  .sc-hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) sepia(.4) contrast(1.1);opacity:.3;}
+  .sc-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(102deg,rgba(22,19,15,.95) 40%,rgba(22,19,15,.55) 100%);}
+  .sc-hero .wrap{position:relative;z-index:1;padding-top:clamp(48px,6vw,86px);padding-bottom:clamp(40px,5vw,70px);}
+  .sc-hero .kicker{color:#e8a092;}
+  .sc-hero h1{font-size:clamp(44px,7vw,96px);font-weight:600;line-height:.96;letter-spacing:-.02em;color:var(--paper);margin:20px 0 0;}
+  .sc-hero h1 em{font-style:italic;color:#e8a092;font-weight:500;}
+  .sc-standfirst{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.1vw,25px);color:#e7dfcb;max-width:54ch;line-height:1.4;margin:22px 0 0;}
+  .sc-hero-meta{display:flex;flex-wrap:wrap;gap:0;margin-top:34px;border-top:1px solid rgba(247,243,233,.22);padding-top:20px;}
+  .sc-hero-meta .stat{padding-right:30px;margin-right:30px;border-right:1px solid rgba(247,243,233,.22);}
+  .sc-hero-meta .stat:last-child{border-right:none;margin-right:0;padding-right:0;}
+  .sc-hero-meta .num{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1;display:block;color:var(--paper);}
+  .sc-hero-meta .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#bcb19c;margin-top:6px;display:block;}
+
+  /* breadcrumb */
+  .sc-crumb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#c7bca6;display:flex;gap:9px;align-items:center;}
+  .sc-crumb a:hover{color:#e8a092;}
+  .sc-crumb .sep{color:#e8a092;}
+
+  /* lead article (category) */
+  .sc-lead-wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(28px,4vw,52px);align-items:start;}
+  .sc-lead .lead-figure{margin-bottom:22px;}
+  .sc-lead .lead-figure img{height:clamp(300px,40vw,500px);}
+  .sc-lead h3{font-size:clamp(30px,4vw,52px);font-weight:700;line-height:1.0;letter-spacing:-.02em;margin:14px 0 16px;}
+  .sc-lead h3 a:hover{color:var(--accent);}
+  .sc-lead-standfirst{font-family:var(--serif);font-size:clamp(18px,1.9vw,22px);line-height:1.45;color:var(--ink-soft);margin:0 0 20px;}
+  .sc-lead-body{font-size:16px;line-height:1.62;color:var(--ink-soft);}
+  .sc-lead-body p{margin:0 0 14px;}
+
+  /* aside facts */
+  .sc-aside{border-top:2px solid var(--ink);padding-top:0;}
+  .sc-aside .index-title{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);padding:14px 0 6px;}
+  .sc-fact{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start;}
+  .sc-fact:last-child{border-bottom:none;}
+  .sc-fact .sc-stat{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--accent);line-height:1;padding-top:2px;white-space:nowrap;}
+  .sc-fact .sc-stat small{font-size:16px;}
+  .sc-fact .sc-fact-txt{font-size:14px;line-height:1.5;color:var(--ink-soft);}
+  .sc-fact .sc-fact-txt b{font-family:var(--sans);font-weight:700;color:var(--ink);display:block;font-size:14.5px;margin-bottom:3px;}
+
+  /* topic chips */
+  .sc-topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .sc-topic{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);border-radius:2px;padding:6px 11px;background:var(--paper-2);}
+
+  @media(max-width:880px){.sc-lead-wrap{grid-template-columns:1fr;}}
+
+  /* text card (no image) */
+  .card--text{background:var(--paper-2);}
+  .card--text .card-body{padding:24px 22px 26px;}
+  .card--text .c-kicker-num{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--accent);line-height:1;display:block;margin-bottom:14px;}
+  .card--text .c-excerpt{margin-bottom:18px;}
+  .card--text .c-readmore{font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--accent);display:inline-flex;align-items:center;gap:7px;margin-top:auto;transition:gap .2s;}
+  .card--text .c-readmore:hover{gap:12px;}
+  .card--text .c-readmore svg{width:14px;height:14px;}
+
+  /* byline link */
+  .c-byline a.bl-link{display:flex;align-items:center;gap:10px;color:inherit;transition:color .15s;}
+  .c-byline a.bl-link:hover .nm{color:var(--accent);}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tline">
+      <span>Κυριακή, 28 Ιουνίου 2026</span>
+      <span class="dot">●</span>
+      <span>Έτος Α′ · Τεύχος 12</span>
+      <span class="dot">●</span>
+      <span>Θεσσαλονίκη — Αθήνα</span>
+    </div>
+    <div class="right">
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-inner">
+      <div class="mast-edition">
+        <b>Ανεξάρτητη Επιθεώρηση</b><br />
+        Τοπική Αυτοδιοίκηση<br />
+        &amp; Έξυπνες Πόλεις
+      </div>
+      <a class="mast-logo" href="index.html" aria-label="City Talks — αρχική">
+        <img src="public/logo/city-talks-logo-ink.png" alt="City Talks — λογότυπο" />
+      </a>
+      <div class="mast-right">
+        <p class="mast-sub">«Ας μιλήσουμε για τους Δήμους.»</p>
+        <button class="burger" id="burger" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="navlinks">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="mainnav" id="top">
+  <div class="wrap">
+    <a class="nav-scroll-logo" href="index.html" aria-label="City Talks">
+      <img src="public/logo/city-talks-mark.png" alt="" /> City&nbsp;Talks
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="opinions.html">Opinions</a>
+      <a href="smart-cities.html" aria-current="page">Smart Cities</a>
+      <a href="arthrografoi.html">Αρθρογράφοι</a>
+      <a href="steile-apopsi.html">Let's Talk</a>
+      <a href="podcasts.html">Podcasts</a>
+      <div class="nav-mobile-cta">
+        <a class="btn btn--accent" href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="nav-mobile-foot">info@city-talks.gr</div>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn--accent" href="steile-apopsi.html">
+        Στείλε άποψη
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+<button class="nav-close" id="navclose" aria-label="Κλείσιμο μενού">
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+
+<!-- CATEGORY HEADER -->
+<section class="sc-hero">
+  <div class="sc-hero-bg">
+    <img src="public/hero/city-talks-04-urban-smart-cities.jpg" alt="Αστικό τοπίο έξυπνης πόλης με ψηφιακές υποδομές" />
+  </div>
+  <div class="wrap">
+    <nav class="sc-crumb" aria-label="Διαδρομή">
+      <a href="index.html">Αρχική</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>Κατηγορία</span>
+    </nav>
+    <div class="hero-eyebrow" style="margin-top:18px;"><span class="kicker">Κατηγορία</span></div>
+    <h1>Smart <em>Cities</em></h1>
+    <p class="sc-standfirst">Η τεχνολογία στην υπηρεσία της τοπικής αυτοδιοίκησης. Από την ψηφιακή δημόσια υγεία και τη βιώσιμη διαχείριση απορριμμάτων μέχρι τον πράσινο τουρισμό και τις πλατφόρμες προστασίας του αστικού περιβάλλοντος — οι έξυπνες πόλεις γίνονται πραγματικότητα όταν οι Δήμοι αξιοποιούν τα δεδομένα και την καινοτομία για να υπηρετήσουν τον πολίτη.</p>
+    <div class="sc-hero-meta">
+      <div class="stat"><span class="num">4</span><span class="lbl">Άρθρα</span></div>
+      <div class="stat"><span class="num">3</span><span class="lbl">Αρθρογράφοι</span></div>
+      <div class="stat"><span class="num">04</span><span class="lbl">Θεματική</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD ARTICLE -->
+<section class="sec" id="lead">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker ink">Το κύριο θέμα · Lead</span>
+        <h2 style="margin-top:10px;">Ψηφιακή δημόσια υγεία</h2>
+      </div>
+      <a class="seclink" href="arthrografoi.html">Οι αρθρογράφοι μας
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="sc-lead-wrap">
+      <!-- LEAD -->
+      <article class="lead sc-lead">
+        <figure class="lead-figure">
+          <img src="public/featured/HealthData.jpg" alt="Ψηφιακή δημόσια υγεία και δεδομένα στην τοπική αυτοδιοίκηση" />
+        </figure>
+        <span class="lead-cat"><span class="kicker">Smart Cities · Ψηφιακή Υγεία</span></span>
+        <h3><a href="arthro-eksypnoi-dimoi.html">Έξυπνοι Δήμοι &amp; Ψηφιακή Δημόσια Υγεία</a></h3>
+        <div class="byline">
+          <img src="public/guests/Ioannis-Karagiannis-0.jpg" alt="Ιωάννης Καραγιάννης" />
+          <div>
+            <div class="bl-name"><a href="arthrografoi.html" style="color:inherit;">Ιωάννης Καραγιάννης</a></div>
+            <div class="bl-meta">ΗΔΙΚΑ Α.Ε. — Ψηφιακή Υγεία</div>
+          </div>
+        </div>
+        <p class="sc-lead-standfirst">Η τεχνολογία αναβαθμίζει τις υπηρεσίες δημόσιας υγείας — ΗΔΙΚΑ &amp; Ταμείο Ανάκαμψης.</p>
+        <div class="sc-lead-body">
+          <p class="dropcap">Η αξιοποίηση της τεχνολογίας για την αναβάθμιση των υπηρεσιών δημόσιας υγείας αναδεικνύει τις δυνατότητες της χώρας στις ψηφιακές καινοτομίες. Οι έξυπνοι Δήμοι δεν είναι πια μια αφηρημένη έννοια· είναι ένα σύνολο συγκεκριμένων εργαλείων που φέρνουν τις υπηρεσίες πιο κοντά στον πολίτη.</p>
+          <p>Μέσα από τους πόρους του Ταμείου Ανάκαμψης και Ανθεκτικότητας, η ΗΔΙΚΑ Α.Ε. υλοποιεί έργα που ψηφιοποιούν τον φάκελο υγείας, διασυνδέουν τις δομές πρωτοβάθμιας φροντίδας και επιτρέπουν στους Δήμους να σχεδιάζουν στοχευμένες παρεμβάσεις πρόληψης για τους κατοίκους τους.</p>
+          <p>Η πρόκληση πλέον δεν είναι τεχνολογική αλλά οργανωτική: πώς θα μετατραπούν τα δεδομένα σε καλύτερες αποφάσεις και πώς θα διασφαλιστεί η προστασία της ιδιωτικότητας των πολιτών σε ένα περιβάλλον όπου η πληροφορία ρέει ελεύθερα μεταξύ φορέων.</p>
+        </div>
+        <a class="readmore" href="arthro-eksypnoi-dimoi.html">Συνέχεια ανάγνωσης
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+
+      <!-- ASIDE -->
+      <aside class="sc-aside">
+        <div class="index-title">Με μια ματιά</div>
+        <div class="sc-fact">
+          <div class="sc-stat">~80<small>%</small></div>
+          <div class="sc-fact-txt"><b>Ταφή απορριμμάτων</b>Η Ελλάδα παραμένει στα υψηλότερα ποσοστά ταφής της ΕΕ — επείγει η στροφή στη βιώσιμη διαχείριση.</div>
+        </div>
+        <div class="sc-fact">
+          <div class="sc-stat">2020</div>
+          <div class="sc-fact-txt"><b>Ορίζοντας 2020</b>Το ευρωπαϊκό έργο HARMONIA φέρνει κλιματική θωράκιση και προστασία υγείας στον Πειραιά.</div>
+        </div>
+        <div class="sc-fact">
+          <div class="sc-stat">ΤΑΑ</div>
+          <div class="sc-fact-txt"><b>Ταμείο Ανάκαμψης</b>Χρηματοδότηση για ψηφιακή υγεία, πράσινες υποδομές και έξυπνες υπηρεσίες στους Δήμους.</div>
+        </div>
+        <div class="sc-topics" role="list">
+          <span class="sc-topic" role="listitem">Ψηφιακή Υγεία</span>
+          <span class="sc-topic" role="listitem">Περιβάλλον</span>
+          <span class="sc-topic" role="listitem">Πράσινος Τουρισμός</span>
+          <span class="sc-topic" role="listitem">Πλατφόρμες</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE GRID -->
+<section class="sec" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker ink">Όλα τα άρθρα · Smart Cities</span>
+        <h2 style="margin-top:10px;">Περισσότερα στη θεματική</h2>
+      </div>
+      <a class="seclink" href="opinions.html">Δες & Opinions
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="cards">
+      <!-- Article 2: Waste (image) -->
+      <article class="card">
+        <figure class="card-fig"><img src="public/featured/Sustainable-Waste-Management.jpg" alt="Βιώσιμη διαχείριση απορριμμάτων" /></figure>
+        <div class="card-body">
+          <span class="c-cat"><span class="kicker">Smart Cities · Περιβάλλον</span></span>
+          <h3><a href="arthro-eksypnoi-dimoi.html">Τέλος στην ταφή απορριμμάτων</a></h3>
+          <p class="c-excerpt">Η Ελλάδα θάβει ~80% των απορριμμάτων της· επενδύσεις στη βιώσιμη διαχείριση τώρα.</p>
+          <div class="c-byline">
+            <a class="bl-link" href="arthrografoi.html">
+              <img src="public/guests/DimitrisPiatsarikas-002.jpg" alt="Δημήτρης Πατσιαρίκας" />
+              <span class="nm">Δημήτρης Πατσιαρίκας</span>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3: Green tourism (text) -->
+      <article class="card card--text">
+        <div class="card-body">
+          <span class="c-kicker-num" aria-hidden="true">03</span>
+          <span class="c-cat"><span class="kicker">Smart Cities · Ανάπτυξη</span></span>
+          <h3><a href="arthro-eksypnoi-dimoi.html">Ο Πράσινος Τουρισμός ως μοχλός τοπικής ανάπτυξης</a></h3>
+          <p class="c-excerpt">Ο Δήμος Δίου-Ολύμπου ως παράδειγμα αειφόρου, πράσινου τουρισμού.</p>
+          <div class="c-byline">
+            <a class="bl-link" href="arthrografoi.html">
+              <img src="public/guests/DimitrisPiatsarikas-002.jpg" alt="Δημήτρης Πατσιαρίκας" />
+              <span class="nm">Δημήτρης Πατσιαρίκας</span>
+            </a>
+          </div>
+          <a class="c-readmore" href="arthro-eksypnoi-dimoi.html">Διάβασε το άρθρο
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Article 4: HARMONIA (text) -->
+      <article class="card card--text">
+        <div class="card-body">
+          <span class="c-kicker-num" aria-hidden="true">04</span>
+          <span class="c-cat"><span class="kicker">Smart Cities · Πλατφόρμες</span></span>
+          <h3><a href="arthro-eksypnoi-dimoi.html">HARMONIA: ψηφιακή πλατφόρμα για την προστασία του Πειραιά</a></h3>
+          <p class="c-excerpt">Έργο Ορίζοντας 2020: κλιματική θωράκιση και προστασία υγείας στον Πειραιά.</p>
+          <div class="c-byline">
+            <a class="bl-link" href="arthrografoi.html">
+              <img src="public/logo/city-talks-mark.png" alt="City Talks" />
+              <span class="nm">City Talks</span>
+            </a>
+          </div>
+          <a class="c-readmore" href="arthro-eksypnoi-dimoi.html">Διάβασε το άρθρο
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE STRIP -->
+<section class="quote">
+  <div class="wrap">
+    <blockquote><span class="mark">«</span>Η πόλη γίνεται έξυπνη όταν υπηρετεί τον πολίτη.<span class="mark">»</span></blockquote>
+    <cite>City Talks — Smart Cities · Έξυπνες Πόλεις</cite>
+  </div>
+</section>
+
+<!-- SMART CITIES FEATURE STRIP -->
+<section class="sec smart" id="smart">
+  <div class="smart-bg">
+    <img src="public/hero/city-talks-04-urban-smart-cities.jpg" alt="Αστικό τοπίο έξυπνης πόλης" />
+  </div>
+  <div class="wrap">
+    <div class="smart-grid">
+      <div class="smart-left">
+        <span class="kicker">Smart Cities · Έξυπνες Πόλεις</span>
+        <h2>Δεδομένα, υποδομές και <em>πολίτες.</em></h2>
+        <p class="smart-lede">Η ψηφιακή μετάβαση των Δήμων δεν είναι αυτοσκοπός. Είναι το μέσο για καθαρότερες πόλεις, καλύτερη υγεία και τοπική ανάπτυξη που σέβεται το περιβάλλον. Στείλε μας τη δική σου άποψη για το πώς η τεχνολογία αλλάζει τον Δήμο σου.</p>
+        <a class="btn btn--accent" href="steile-apopsi.html">Στείλε άποψη
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="smart-feats">
+        <a class="sfeat" href="arthro-eksypnoi-dimoi.html">
+          <span class="sf-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><path d="M9 11h6M12 8v6"/></svg></span>
+          <div>
+            <span class="sf-cat">Ψηφιακή Υγεία</span>
+            <h4>Έξυπνοι Δήμοι &amp; Ψηφιακή Δημόσια Υγεία</h4>
+            <div class="sf-auth">Ιωάννης Καραγιάννης</div>
+          </div>
+          <span class="sf-arrow"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="sfeat" href="arthro-eksypnoi-dimoi.html">
+          <span class="sf-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/><path d="M10 11v5M14 11v5"/></svg></span>
+          <div>
+            <span class="sf-cat">Περιβάλλον</span>
+            <h4>Τέλος στην ταφή απορριμμάτων</h4>
+            <div class="sf-auth">Δημήτρης Πατσιαρίκας</div>
+          </div>
+          <span class="sf-arrow"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="sfeat" href="arthro-eksypnoi-dimoi.html">
+          <span class="sf-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V8l5-4 5 4v12M14 20V11l5-3v12M4 20h16M8 12h2M8 16h2"/></svg></span>
+          <div>
+            <span class="sf-cat">Ανάπτυξη</span>
+            <h4>Ο Πράσινος Τουρισμός ως μοχλός τοπικής ανάπτυξης</h4>
+            <div class="sf-auth">Δημήτρης Πατσιαρίκας</div>
+          </div>
+          <span class="sf-arrow"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="sfeat" href="arthro-eksypnoi-dimoi.html">
+          <span class="sf-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+          <div>
+            <span class="sf-cat">Πλατφόρμες</span>
+            <h4>HARMONIA: ψηφιακή πλατφόρμα για την προστασία του Πειραιά</h4>
+            <div class="sf-auth">City Talks</div>
+          </div>
+          <span class="sf-arrow"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="public/logo/city-talks-logo-white.png" alt="City Talks" />
+        <p>Ανεξάρτητη επιθεώρηση Τοπικής Αυτοδιοίκησης &amp; Έξυπνων Πόλεων. Ας μιλήσουμε για τους Δήμους.</p>
+        <a class="foot-mail" href="mailto:info@city-talks.gr">
+          <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          info@city-talks.gr
+        </a>
+      </div>
+      <div class="foot-col">
+        <h5>Θεματικές</h5>
+        <a href="opinions.html">Opinions</a>
+        <a href="smart-cities.html">Smart Cities</a>
+        <a href="arthrografoi.html">Αρθρογράφοι</a>
+        <a href="podcasts.html">Podcasts</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επιθεώρηση</h5>
+        <a href="index.html">Αρχική</a>
+        <a href="opinions.html">Το τεύχος</a>
+        <a href="steile-apopsi.html">Newsletter</a>
+        <a href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επικοινωνία</h5>
+        <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+        <a href="oroi-xrisis">Όροι χρήσης</a>
+        <a href="politiki-aporritou">Πολιτική απορρήτου</a>
+        <a href="cookies">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copy">© 2026 City Talks · city-talks.gr · Με την επιφύλαξη παντός δικαιώματος.</span>
+      <div class="foot-social">
+        <a href="https://www.facebook.com/citytalks.gr" aria-label="Facebook"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.linkedin.com/company/city-talks-gr" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3zM5 10h3v9H5zM11 10h3v1.3c.5-.8 1.5-1.5 3-1.5 2.5 0 3 1.7 3 4V19h-3v-4c0-1-.4-1.7-1.4-1.7S14 14 14 15v4h-3z"/></svg></a>
+        <a href="https://x.com/citytalks_gr" aria-label="X"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5z"/></svg></a>
+        <a href="mailto:info@city-talks.gr" aria-label="Email"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var burger=document.getElementById('burger');
+    var nav=document.getElementById('navlinks');
+    var close=document.getElementById('navclose');
+    var scrim=document.getElementById('scrim');
+    var isOpen=false;
+    var mq=window.matchMedia('(max-width:980px)');
+
+    // Make off-canvas panel unreachable to keyboard/SR when closed (only at mobile widths).
+    function syncInert(){
+      if(mq.matches && !isOpen){
+        nav.setAttribute('aria-hidden','true');
+        nav.setAttribute('inert','');
+      }else{
+        nav.removeAttribute('aria-hidden');
+        nav.removeAttribute('inert');
+      }
+    }
+
+    function focusables(){
+      return Array.prototype.slice.call(
+        nav.querySelectorAll('a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])')
+      ).concat([close]);
+    }
+
+    function open(){
+      isOpen=true;
+      nav.classList.add('open');
+      document.body.classList.add('menu-open');
+      burger.setAttribute('aria-expanded','true');
+      syncInert();
+      close.focus();
+    }
+    function shut(returnFocus){
+      isOpen=false;
+      nav.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded','false');
+      syncInert();
+      if(returnFocus!==false)burger.focus();
+    }
+
+    burger.addEventListener('click',open);
+    close.addEventListener('click',function(){shut();});
+    scrim.addEventListener('click',function(){shut();});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){shut(false);});});
+
+    document.addEventListener('keydown',function(e){
+      if(!isOpen)return;
+      if(e.key==='Escape'){shut();return;}
+      if(e.key==='Tab'){
+        var f=focusables();
+        if(!f.length)return;
+        var first=f[0],last=f[f.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      }
+    });
+
+    // Re-sync when crossing the breakpoint (e.g. resize from mobile to desktop while open).
+    (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){
+      if(!mq.matches&&isOpen)shut(false);
+      syncInert();
+    });
+    syncInert();
+  })();
+</script>
+</body>
+</html>

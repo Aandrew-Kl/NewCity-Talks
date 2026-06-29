@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Στείλε άποψη — Let's Talk | CITY TALKS</title>
+<meta name="description" content="Στείλε την άποψή σου στο City Talks. Φιλοξενούμε απόψεις ανθρώπων με αποδεδειγμένη γνώση στη διοίκηση των Δήμων — «Ας μιλήσουμε για τους Δήμους». Φόρμα υποβολής, οδηγίες σύνταξης και επικοινωνία." />
+<link rel="icon" type="image/png" href="public/logo/city-talks-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  /* ---------- PAGE: ΣΤΕΙΛΕ ΑΠΟΨΗ / LET'S TALK ---------- */
+  .lt-hero{border-bottom:3px double var(--ink);padding:clamp(40px,5vw,72px) 0 clamp(34px,4vw,52px);}
+  .lt-hero-eyebrow{margin-bottom:20px;}
+  .lt-hero h1{
+    font-size:clamp(38px,6vw,76px);font-weight:600;line-height:.99;letter-spacing:-.02em;
+    max-width:18ch;margin-bottom:18px;
+  }
+  .lt-hero h1 em{font-style:italic;color:var(--accent);font-weight:500;}
+  .lt-hero-sub{
+    font-family:var(--serif);font-style:italic;font-size:clamp(18px,2vw,24px);
+    color:var(--ink-soft);max-width:54ch;line-height:1.4;
+  }
+  .lt-breadcrumb{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-mute);margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+  }
+  .lt-breadcrumb a:hover{color:var(--accent);}
+  .lt-breadcrumb .sep{color:var(--line);}
+
+  .lt-layout{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(28px,4vw,56px);align-items:start;}
+
+  /* ----- FORM (left) ----- */
+  .lt-form-wrap{border-top:1px solid var(--ink);padding-top:30px;}
+  .lt-form-intro{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px;}
+  .lt-form-title{font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-.01em;margin-bottom:6px;}
+  .lt-form-note{font-size:14.5px;color:var(--ink-soft);max-width:52ch;margin:0 0 28px;line-height:1.55;}
+  .lt-form{display:grid;gap:20px;}
+  .lt-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:560px){.lt-row{grid-template-columns:1fr;}}
+  .lt-field{display:flex;flex-direction:column;gap:7px;}
+  .lt-field label{
+    font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink);
+  }
+  .lt-field .req{color:var(--accent);margin-left:3px;}
+  .lt-field .opt{color:var(--ink-mute);font-weight:400;margin-left:5px;text-transform:none;letter-spacing:.04em;}
+  .lt-field input,
+  .lt-field select,
+  .lt-field textarea{
+    width:100%;background:var(--white);border:1.5px solid var(--line);color:var(--ink);
+    font-family:var(--sans);font-size:15px;padding:.78em .9em;border-radius:2px;line-height:1.45;
+    transition:border-color .15s;
+  }
+  .lt-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A23A2B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85em center;background-size:16px;padding-right:2.4em;cursor:pointer;}
+  .lt-field textarea{resize:vertical;min-height:190px;font-size:15.5px;line-height:1.6;}
+  .lt-field input::placeholder,
+  .lt-field textarea::placeholder{color:#a89e8a;}
+  .lt-field input:focus,
+  .lt-field select:focus,
+  .lt-field textarea:focus{outline:none;border-color:var(--accent);}
+  .lt-field input:focus-visible,
+  .lt-field select:focus-visible,
+  .lt-field textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .lt-field input:invalid:not(:placeholder-shown),
+  .lt-field textarea:invalid:not(:placeholder-shown){border-color:var(--accent-dark);}
+  .lt-hint{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-mute);margin-top:1px;}
+
+  /* file input */
+  .lt-file{
+    display:flex;align-items:center;gap:12px;border:1.5px dashed var(--line);background:var(--paper-2);
+    padding:.7em .9em;border-radius:2px;
+  }
+  .lt-file input[type=file]{font-family:var(--sans);font-size:13.5px;color:var(--ink-soft);background:none;border:none;padding:0;width:auto;}
+  .lt-file input[type=file]::file-selector-button{
+    font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.01em;
+    border:1.5px solid var(--ink);background:transparent;color:var(--ink);
+    padding:.55em 1em;border-radius:2px;cursor:pointer;margin-right:12px;transition:all .15s;
+  }
+  .lt-file input[type=file]::file-selector-button:hover{background:var(--ink);color:var(--paper);}
+
+  /* consent */
+  .lt-consent{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;border-top:1px solid var(--line);padding-top:20px;}
+  .lt-consent input[type=checkbox]{width:20px;height:20px;margin-top:2px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
+  .lt-consent label{font-size:13.5px;color:var(--ink-soft);line-height:1.5;font-family:var(--sans);}
+  .lt-consent label a{color:var(--accent);text-decoration:underline;}
+
+  .lt-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px;}
+  .lt-submit{
+    background:var(--accent);border:1.5px solid var(--accent);color:var(--white);
+    font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.01em;
+    padding:.85em 1.6em;border-radius:2px;cursor:pointer;display:inline-flex;align-items:center;gap:.55em;
+    transition:background .2s,border-color .2s;
+  }
+  .lt-submit:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
+  .lt-submit svg{width:16px;height:16px;}
+  .lt-submit:disabled{opacity:.7;cursor:default;}
+  .lt-status{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--accent);
+    min-height:1.2em;line-height:1.5;flex:1;min-width:220px;
+  }
+  .lt-status.ok{color:var(--accent-dark);}
+
+  /* ----- ASIDE (right) ----- */
+  .lt-aside{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--ink);}
+  .lt-aside-title{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);padding:30px 0 16px;}
+  .lt-guide{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start;}
+  .lt-guide:first-of-type{border-top:1px solid var(--line);}
+  .lt-guide .g-ic{
+    width:42px;height:42px;border:1px solid var(--ink);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0;
+  }
+  .lt-guide .g-ic svg{width:20px;height:20px;}
+  .lt-guide h4{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.15;letter-spacing:-.01em;margin-bottom:6px;}
+  .lt-guide p{font-size:14px;color:var(--ink-soft);line-height:1.5;margin:0;}
+
+  .lt-contact{
+    background:var(--ink);color:var(--paper);padding:clamp(26px,3vw,34px);
+    margin-top:30px;border-radius:2px;
+  }
+  .lt-contact .kicker{color:#e8a092;margin-bottom:16px;}
+  .lt-contact h3{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);font-weight:600;color:var(--paper);line-height:1.08;margin-bottom:10px;}
+  .lt-contact h3 em{font-style:italic;color:#e8a092;font-weight:500;}
+  .lt-contact p{color:#d9cfb9;font-size:14.5px;line-height:1.55;max-width:34ch;margin:0 0 22px;}
+  .lt-contact .lt-mail{
+    display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:15px;
+    letter-spacing:.02em;color:var(--paper);border:1.5px solid rgba(247,243,233,.4);
+    padding:.7em 1em;border-radius:2px;transition:all .18s;width:100%;justify-content:center;
+  }
+  .lt-contact .lt-mail:hover{background:var(--accent);border-color:var(--accent);color:var(--white);}
+  .lt-contact .lt-mail svg{width:18px;height:18px;}
+  .lt-contact .lt-mail:focus-visible{outline-color:#e8a092;}
+  .lt-contact .lt-detail{
+    display:flex;justify-content:space-between;gap:14px;padding:13px 0;
+    border-top:1px solid rgba(247,243,233,.18);font-size:13.5px;
+  }
+  .lt-contact .lt-detail:first-of-type{margin-top:20px;}
+  .lt-contact .lt-detail .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#bcb19c;}
+  .lt-contact .lt-detail .val{color:var(--paper);text-align:right;}
+
+  @media(max-width:880px){
+    .lt-layout{grid-template-columns:1fr;}
+    .lt-aside{border-top:none;}
+    .lt-aside-title{padding-top:8px;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tline">
+      <span>Κυριακή, 28 Ιουνίου 2026</span>
+      <span class="dot">●</span>
+      <span>Έτος Α′ · Τεύχος 12</span>
+      <span class="dot">●</span>
+      <span>Θεσσαλονίκη — Αθήνα</span>
+    </div>
+    <div class="right">
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-inner">
+      <div class="mast-edition">
+        <b>Ανεξάρτητη Επιθεώρηση</b><br />
+        Τοπική Αυτοδιοίκηση<br />
+        &amp; Έξυπνες Πόλεις
+      </div>
+      <a class="mast-logo" href="index.html" aria-label="City Talks — αρχική">
+        <img src="public/logo/city-talks-logo-ink.png" alt="City Talks — λογότυπο" />
+      </a>
+      <div class="mast-right">
+        <p class="mast-sub">«Ας μιλήσουμε για τους Δήμους.»</p>
+        <button class="burger" id="burger" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="navlinks">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="mainnav" id="top">
+  <div class="wrap">
+    <a class="nav-scroll-logo" href="index.html" aria-label="City Talks">
+      <img src="public/logo/city-talks-mark.png" alt="" /> City&nbsp;Talks
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="opinions.html">Opinions</a>
+      <a href="smart-cities.html">Smart Cities</a>
+      <a href="arthrografoi.html">Αρθρογράφοι</a>
+      <a href="steile-apopsi.html" aria-current="page">Let's Talk</a>
+      <a href="podcasts.html">Podcasts</a>
+      <div class="nav-mobile-cta">
+        <a class="btn btn--accent" href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="nav-mobile-foot">info@city-talks.gr</div>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn--accent" href="steile-apopsi.html">
+        Στείλε άποψη
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+<button class="nav-close" id="navclose" aria-label="Κλείσιμο μενού">
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+
+<!-- PAGE HERO -->
+<section class="lt-hero">
+  <div class="wrap">
+    <div class="lt-breadcrumb">
+      <a href="index.html">Αρχική</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span>Let's Talk · Στείλε άποψη</span>
+    </div>
+    <div class="lt-hero-eyebrow"><span class="kicker">Let's Talk · Η φωνή σου</span></div>
+    <h1>Στείλε την <em>άποψή σου.</em></h1>
+    <p class="lt-hero-sub">Το City Talks φιλοξενεί απόψεις ανθρώπων με αποδεδειγμένη γνώση και εμπειρία στη διοίκηση των Δήμων — αιρετών, στελεχών και ειδικών. Αν έχεις κάτι ουσιαστικό να πεις για την Τοπική Αυτοδιοίκηση ή τις Έξυπνες Πόλεις, εδώ είναι το βήμα σου. Ας μιλήσουμε για τους Δήμους.</p>
+  </div>
+</section>
+
+<!-- FORM + ASIDE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="lt-layout">
+
+      <!-- LEFT: SUBMISSION FORM -->
+      <div class="lt-form-wrap">
+        <div class="lt-form-intro">Φόρμα υποβολής</div>
+        <h2 class="lt-form-title">Κατάθεσε το άρθρο σου</h2>
+        <p class="lt-form-note">Συμπλήρωσε τα στοιχεία σου και το κείμενό σου. Η συντακτική ομάδα το διαβάζει και επικοινωνεί μαζί σου πριν τη δημοσίευση. Τα πεδία με αστερίσκο είναι υποχρεωτικά.</p>
+
+        <form class="lt-form" id="apopsiform" action="https://city-talks.gr/api/submissions" method="post" enctype="multipart/form-data" novalidate>
+          <div class="lt-row">
+            <div class="lt-field">
+              <label for="f-name">Ονοματεπώνυμο<span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="f-name" name="name" required minlength="3" maxlength="80" autocomplete="name" placeholder="π.χ. Μαρία Παπαδοπούλου" />
+            </div>
+            <div class="lt-field">
+              <label for="f-email">Email<span class="req" aria-hidden="true">*</span></label>
+              <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="name@example.gr" />
+            </div>
+          </div>
+
+          <div class="lt-row">
+            <div class="lt-field">
+              <label for="f-role">Ιδιότητα / Δήμος<span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="f-role" name="role" required maxlength="120" placeholder="π.χ. Αντιδήμαρχος, Δήμος Θέρμης" />
+            </div>
+            <div class="lt-field">
+              <label for="f-cat">Κατηγορία<span class="req" aria-hidden="true">*</span></label>
+              <select id="f-cat" name="category" required>
+                <option value="" disabled selected>Επίλεξε θεματική…</option>
+                <option value="opinions">Opinions — Απόψεις &amp; Αυτοδιοίκηση</option>
+                <option value="smart-cities">Smart Cities — Έξυπνες Πόλεις</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="lt-field">
+            <label for="f-title">Τίτλος άρθρου<span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="f-title" name="title" required minlength="6" maxlength="140" placeholder="Ένας τίτλος που λέει την ουσία της άποψής σου" />
+          </div>
+
+          <div class="lt-field">
+            <label for="f-body">Το κείμενό σου<span class="req" aria-hidden="true">*</span></label>
+            <textarea id="f-body" name="body" required minlength="400" maxlength="12000" placeholder="Γράψε εδώ την άποψή σου. Προτείνουμε 600–1.200 λέξεις: μια καθαρή θέση, τεκμηριωμένα επιχειρήματα και, αν γίνεται, μια συγκεκριμένη πρόταση για τους Δήμους."></textarea>
+            <span class="lt-hint">Ενδεικτική έκταση: 600–1.200 λέξεις.</span>
+          </div>
+
+          <div class="lt-field">
+            <label for="f-file">Φωτογραφία / βιογραφικό <span class="opt">(προαιρετικό)</span></label>
+            <div class="lt-file">
+              <input type="file" id="f-file" name="attachment" accept="image/jpeg,image/png,.pdf,.doc,.docx" aria-describedby="f-file-hint" />
+            </div>
+            <span class="lt-hint" id="f-file-hint">Φωτογραφία προφίλ ή σύντομο βιογραφικό · JPG, PNG, PDF, DOC — έως 5 MB.</span>
+          </div>
+
+          <div class="lt-consent">
+            <input type="checkbox" id="f-consent" name="consent" required />
+            <label for="f-consent">Συναινώ στην επεξεργασία των στοιχείων μου από το City Talks για τη δημοσίευση του άρθρου και έχω διαβάσει την <a href="politiki-aporritou">πολιτική απορρήτου</a>. Δηλώνω ότι το κείμενο είναι πρωτότυπο και δικό μου.<span class="req" aria-hidden="true">*</span></label>
+          </div>
+
+          <div class="lt-actions">
+            <button type="submit" class="lt-submit">
+              Αποστολή άποψης
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <p class="lt-status" id="apopsistatus" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT: GUIDELINES + CONTACT -->
+      <aside class="lt-aside" aria-label="Οδηγίες σύνταξης και επικοινωνία">
+        <div class="lt-aside-title">Σύντομες οδηγίες</div>
+
+        <div class="lt-guide">
+          <span class="g-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h12"/></svg></span>
+          <div>
+            <h4>Θεματολογία</h4>
+            <p>Τοπική Αυτοδιοίκηση και Έξυπνες Πόλεις: πολεοδομία, διαχείριση πόρων, ψηφιακές υπηρεσίες, στελέχωση των ΟΤΑ, βιώσιμη ανάπτυξη. Συγκεκριμένη θέση, όχι γενικότητες.</p>
+          </div>
+        </div>
+
+        <div class="lt-guide">
+          <span class="g-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h10"/><path d="M19 15l2 2-2 2"/></svg></span>
+          <div>
+            <h4>Έκταση</h4>
+            <p>Ιδανικά 600 έως 1.200 λέξεις. Αρκετά για να αναπτύξεις το επιχείρημά σου, αρκετά σύντομα για να διαβαστεί ολόκληρο. Παράγραφοι μικρές, με μία ιδέα η καθεμία.</p>
+          </div>
+        </div>
+
+        <div class="lt-guide">
+          <span class="g-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span>
+          <div>
+            <h4>Ύφος</h4>
+            <p>Ελληνικά, καθαρός λόγος, τεκμηρίωση με στοιχεία ή προσωπική εμπειρία. Σεβασμός στους θεσμούς και τα πρόσωπα — επιχειρήματα, όχι χαρακτηρισμοί.</p>
+          </div>
+        </div>
+
+        <div class="lt-guide">
+          <span class="g-ic"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <div>
+            <h4>Διαδικασία</h4>
+            <p>Η συντακτική ομάδα αξιολογεί κάθε υποβολή και επικοινωνεί μαζί σου εντός λίγων ημερών. Διατηρούμε το δικαίωμα ήπιας επιμέλειας πριν τη δημοσίευση.</p>
+          </div>
+        </div>
+
+        <div class="lt-contact">
+          <span class="kicker">Άμεση επικοινωνία</span>
+          <h3>Προτιμάς να μας <em>γράψεις;</em></h3>
+          <p>Στείλε μας το άρθρο ή την πρότασή σου απευθείας στο email της σύνταξης.</p>
+          <a class="lt-mail" href="mailto:info@city-talks.gr?subject=Πρόταση%20άρθρου%20—%20City%20Talks">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            info@city-talks.gr
+          </a>
+          <div class="lt-detail">
+            <span class="lbl">Απάντηση</span>
+            <span class="val">Εντός 2–5 ημερών</span>
+          </div>
+          <div class="lt-detail">
+            <span class="lbl">Έδρα</span>
+            <span class="val">Θεσσαλονίκη — Αθήνα</span>
+          </div>
+          <div class="lt-detail">
+            <span class="lbl">Γίνε αρθρογράφος</span>
+            <span class="val"><a href="arthrografoi.html" style="border-bottom:1px solid #e8a092;">Οι φωνές μας</a></span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE STRIP -->
+<section class="quote">
+  <div class="wrap">
+    <blockquote><span class="mark">«</span>Your Opinion Matters.<span class="mark">»</span></blockquote>
+    <cite>City Talks — Η συζήτηση ξεκινά από τον Δήμο σου</cite>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="public/logo/city-talks-logo-white.png" alt="City Talks" />
+        <p>Ανεξάρτητη επιθεώρηση Τοπικής Αυτοδιοίκησης &amp; Έξυπνων Πόλεων. Ας μιλήσουμε για τους Δήμους.</p>
+        <a class="foot-mail" href="mailto:info@city-talks.gr">
+          <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          info@city-talks.gr
+        </a>
+      </div>
+      <div class="foot-col">
+        <h5>Θεματικές</h5>
+        <a href="opinions.html">Opinions</a>
+        <a href="smart-cities.html">Smart Cities</a>
+        <a href="arthrografoi.html">Αρθρογράφοι</a>
+        <a href="podcasts.html">Podcasts</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επιθεώρηση</h5>
+        <a href="index.html">Αρχική</a>
+        <a href="opinions.html">Το τεύχος</a>
+        <a href="steile-apopsi.html">Newsletter</a>
+        <a href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επικοινωνία</h5>
+        <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+        <a href="oroi-xrisis">Όροι χρήσης</a>
+        <a href="politiki-aporritou">Πολιτική απορρήτου</a>
+        <a href="cookies">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copy">© 2026 City Talks · city-talks.gr · Με την επιφύλαξη παντός δικαιώματος.</span>
+      <div class="foot-social">
+        <a href="https://www.facebook.com/citytalks.gr" aria-label="Facebook"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.linkedin.com/company/city-talks-gr" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3zM5 10h3v9H5zM11 10h3v1.3c.5-.8 1.5-1.5 3-1.5 2.5 0 3 1.7 3 4V19h-3v-4c0-1-.4-1.7-1.4-1.7S14 14 14 15v4h-3z"/></svg></a>
+        <a href="https://x.com/citytalks_gr" aria-label="X"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5z"/></svg></a>
+        <a href="mailto:info@city-talks.gr" aria-label="Email"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var burger=document.getElementById('burger');
+    var nav=document.getElementById('navlinks');
+    var close=document.getElementById('navclose');
+    var scrim=document.getElementById('scrim');
+    var isOpen=false;
+    var mq=window.matchMedia('(max-width:980px)');
+
+    // Make off-canvas panel unreachable to keyboard/SR when closed (only at mobile widths).
+    function syncInert(){
+      if(mq.matches && !isOpen){
+        nav.setAttribute('aria-hidden','true');
+        nav.setAttribute('inert','');
+      }else{
+        nav.removeAttribute('aria-hidden');
+        nav.removeAttribute('inert');
+      }
+    }
+
+    function focusables(){
+      return Array.prototype.slice.call(
+        nav.querySelectorAll('a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])')
+      ).concat([close]);
+    }
+
+    function open(){
+      isOpen=true;
+      nav.classList.add('open');
+      document.body.classList.add('menu-open');
+      burger.setAttribute('aria-expanded','true');
+      syncInert();
+      close.focus();
+    }
+    function shut(returnFocus){
+      isOpen=false;
+      nav.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded','false');
+      syncInert();
+      if(returnFocus!==false)burger.focus();
+    }
+
+    burger.addEventListener('click',open);
+    close.addEventListener('click',function(){shut();});
+    scrim.addEventListener('click',function(){shut();});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){shut(false);});});
+
+    document.addEventListener('keydown',function(e){
+      if(!isOpen)return;
+      if(e.key==='Escape'){shut();return;}
+      if(e.key==='Tab'){
+        var f=focusables();
+        if(!f.length)return;
+        var first=f[0],last=f[f.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      }
+    });
+
+    // Re-sync when crossing the breakpoint (e.g. resize from mobile to desktop while open).
+    (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){
+      if(!mq.matches&&isOpen)shut(false);
+      syncInert();
+    });
+    syncInert();
+
+    // Submission form: progressive enhancement with accessible status (demo build, no backend).
+    var form=document.getElementById('apopsiform');
+    var status=document.getElementById('apopsistatus');
+    if(form){
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        status.classList.remove('ok');
+        if(!form.checkValidity()){
+          var firstInvalid=form.querySelector(':invalid');
+          status.textContent='Συμπλήρωσε τα υποχρεωτικά πεδία πριν την αποστολή.';
+          if(firstInvalid)firstInvalid.focus();
+          return;
+        }
+        var btn=form.querySelector('.lt-submit');
+        btn.disabled=true;
+        btn.textContent='Στάλθηκε ✓';
+        status.classList.add('ok');
+        status.textContent='Ευχαριστούμε! Η άποψή σου παραλήφθηκε. Η συντακτική ομάδα θα επικοινωνήσει μαζί σου σύντομα.';
+        form.reset();
+      });
+    }
+  })();
+</script>
+</body>
+</html>

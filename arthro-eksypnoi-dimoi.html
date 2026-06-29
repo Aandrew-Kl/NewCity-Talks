@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Έξυπνοι Δήμοι &amp; Ψηφιακή Δημόσια Υγεία — CITY TALKS</title>
+<meta name="description" content="Ο Ιωάννης Καραγιάννης (ΗΔΙΚΑ Α.Ε.) για τους Έξυπνους Δήμους και την ψηφιακή δημόσια υγεία: ηλεκτρονικός φάκελος υγείας, «έξυπνα» νοσοκομεία, πρόληψη και ο ρόλος της τοπικής αυτοδιοίκησης στην ψηφιακή εγγραμματοσύνη υγείας." />
+<link rel="icon" type="image/png" href="public/logo/city-talks-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  /* ---------- ARTICLE PAGE (page-scoped) ---------- */
+  .art-wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut);}
+
+  /* Breadcrumb */
+  .art-crumb{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);padding:20px 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .art-crumb a{color:var(--ink-mute);transition:color .15s;}
+  .art-crumb a:hover{color:var(--accent);}
+  .art-crumb .sep{color:var(--line);}
+  .art-crumb .cur{color:var(--ink);}
+
+  /* Article header */
+  .art-head{border-bottom:3px double var(--ink);padding:26px 0 34px;margin-bottom:0;}
+  .art-overline{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin:18px 0 0;}
+  .art-h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,68px);font-weight:700;line-height:1.0;letter-spacing:-.02em;margin:8px 0 0;max-width:18ch;}
+  .art-h1 em{font-style:italic;color:var(--accent);font-weight:500;}
+  .art-byline{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px;}
+  .art-byline img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:1px solid var(--line);filter:grayscale(.3) contrast(1.05);}
+  .art-byline .ab-name{font-family:var(--sans);font-weight:700;font-size:16px;line-height:1.2;}
+  .art-byline .ab-name a:hover{color:var(--accent);}
+  .art-byline .ab-meta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin-top:4px;}
+  .art-byline .ab-sep{width:1px;align-self:stretch;background:var(--line);margin:0 4px;}
+  .art-byline .ab-stamp{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);line-height:1.7;}
+
+  /* Hero image */
+  .art-hero{margin:0;border-bottom:1px solid var(--ink);}
+  .art-hero figure{margin:0;position:relative;overflow:hidden;background:var(--ink);}
+  .art-hero img{width:100%;height:clamp(280px,46vw,560px);object-fit:cover;filter:contrast(1.04) saturate(.94) sepia(.06);}
+  .art-hero figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:11px 0 0;}
+
+  /* Article body layout */
+  .art-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(34px,5vw,68px);padding:clamp(38px,5vw,62px) 0 clamp(48px,6vw,84px);}
+  .art-main{min-width:0;}
+  .art-body{max-width:68ch;font-family:var(--serif);font-size:clamp(18px,1.35vw,20px);line-height:1.72;color:var(--ink-soft);}
+  .art-body p{margin:0 0 1.35em;}
+  .art-body p.dropcap::first-letter{
+    font-family:var(--serif);font-weight:700;float:left;font-size:84px;line-height:.72;
+    padding:8px 12px 0 0;color:var(--accent);
+  }
+  .art-body .pull{
+    margin:1.6em 0;padding:6px 0 6px 28px;border-left:4px solid var(--accent);
+    font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(21px,2.3vw,28px);
+    line-height:1.3;color:var(--ink);letter-spacing:-.01em;max-width:none;
+  }
+  .art-body .pull .qmark{color:var(--accent);font-style:normal;font-weight:600;}
+
+  /* Pull-quote feature (the big one) */
+  .art-feature-quote{
+    margin:2.2em 0;padding:clamp(28px,4vw,48px) clamp(24px,4vw,52px);
+    background:var(--ink);color:var(--paper);position:relative;border-radius:2px;
+  }
+  .art-feature-quote blockquote{
+    margin:0;font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:clamp(22px,2.7vw,32px);line-height:1.28;letter-spacing:-.01em;max-width:30ch;
+  }
+  .art-feature-quote .qbig{position:absolute;top:6px;left:18px;font-family:var(--serif);font-size:110px;line-height:1;color:#e8a092;opacity:.5;}
+  .art-feature-quote cite{display:block;margin-top:18px;font-family:var(--mono);font-style:normal;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#e8a092;}
+
+  /* Aside (sidebar) */
+  .art-aside{border-top:1px solid var(--ink);align-self:start;}
+  .art-aside .as-title{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);padding:14px 0 4px;}
+  .art-share{display:flex;gap:10px;padding:14px 0 22px;border-bottom:1px solid var(--line);}
+  .art-share a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);transition:all .18s;}
+  .art-share a:hover{background:var(--accent);border-color:var(--accent);color:var(--white);}
+  .art-share svg{width:16px;height:16px;}
+  .art-facts{padding:18px 0 0;}
+  .art-fact{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:start;}
+  .art-fact .af-k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);padding-top:2px;}
+  .art-fact .af-v{font-family:var(--serif);font-size:16px;line-height:1.25;}
+
+  /* Author bio box */
+  .art-bio{margin-top:clamp(36px,5vw,56px);border:1px solid var(--ink);background:var(--paper-2);padding:clamp(26px,3.4vw,40px);display:flex;gap:26px;align-items:flex-start;max-width:68ch;}
+  .art-bio img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);filter:grayscale(.3) contrast(1.06);flex-shrink:0;}
+  .art-bio .bio-kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);}
+  .art-bio h3{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:-.01em;margin:8px 0 2px;}
+  .art-bio h3 a:hover{color:var(--accent);}
+  .art-bio .bio-role{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+  .art-bio p{font-family:var(--sans);font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 14px;}
+  .art-bio .bio-link{font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--accent);display:inline-flex;align-items:center;gap:7px;transition:gap .2s;}
+  .art-bio .bio-link:hover{gap:12px;}
+  .art-bio .bio-link svg{width:15px;height:15px;}
+
+  /* Related articles */
+  .art-related{padding:clamp(40px,5vw,72px) 0;border-top:3px solid var(--ink);}
+  .art-related .rel-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:34px;}
+  .art-related .rel-head h2{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:600;}
+  .art-related .rel-head .seclink{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;display:inline-flex;align-items:center;gap:6px;transition:gap .2s;}
+  .art-related .rel-head .seclink:hover{gap:11px;}
+  .art-related .rel-head .seclink svg{width:14px;height:14px;}
+  .rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--line);}
+  .rel-card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;background:var(--paper);transition:background .2s;}
+  .rel-card:hover{background:var(--white);}
+  .rel-card .rc-fig{overflow:hidden;border-bottom:1px solid var(--line);}
+  .rel-card .rc-fig img{width:100%;height:180px;object-fit:cover;filter:contrast(1.03) saturate(.92) sepia(.05);transition:transform .5s ease;}
+  .rel-card:hover .rc-fig img{transform:scale(1.05);}
+  .rel-card .rc-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1;}
+  .rel-card .rc-cat{margin-bottom:10px;}
+  .rel-card h3{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.12;letter-spacing:-.01em;margin-bottom:9px;}
+  .rel-card h3 a:hover{color:var(--accent);}
+  .rel-card .rc-ex{font-size:14px;color:var(--ink-soft);line-height:1.55;flex:1;}
+  .rel-card .rc-auth{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin-top:16px;padding-top:13px;border-top:1px solid var(--line);}
+  @media(max-width:900px){.rel-grid{grid-template-columns:1fr;}}
+
+  @media(max-width:960px){
+    .art-layout{grid-template-columns:1fr;}
+    .art-aside{border-top:1px solid var(--line);}
+  }
+  @media(max-width:560px){
+    .art-bio{flex-direction:column;gap:18px;}
+    .art-byline .ab-sep{display:none;}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tline">
+      <span>Κυριακή, 28 Ιουνίου 2026</span>
+      <span class="dot">●</span>
+      <span>Έτος Α′ · Τεύχος 12</span>
+      <span class="dot">●</span>
+      <span>Θεσσαλονίκη — Αθήνα</span>
+    </div>
+    <div class="right">
+      <a href="#newsletter">Newsletter</a>
+      <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-inner">
+      <div class="mast-edition">
+        <b>Ανεξάρτητη Επιθεώρηση</b><br />
+        Τοπική Αυτοδιοίκηση<br />
+        &amp; Έξυπνες Πόλεις
+      </div>
+      <a class="mast-logo" href="index.html" aria-label="City Talks — αρχική">
+        <img src="public/logo/city-talks-logo-ink.png" alt="City Talks — λογότυπο" />
+      </a>
+      <div class="mast-right">
+        <p class="mast-sub">«Ας μιλήσουμε για τους Δήμους.»</p>
+        <button class="burger" id="burger" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="navlinks">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="mainnav" id="top">
+  <div class="wrap">
+    <a class="nav-scroll-logo" href="index.html" aria-label="City Talks">
+      <img src="public/logo/city-talks-mark.png" alt="" /> City&nbsp;Talks
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="opinions.html">Opinions</a>
+      <a href="smart-cities.html" aria-current="page">Smart Cities</a>
+      <a href="arthrografoi.html">Αρθρογράφοι</a>
+      <a href="steile-apopsi.html">Let's Talk</a>
+      <a href="podcasts.html">Podcasts</a>
+      <div class="nav-mobile-cta">
+        <a class="btn btn--accent" href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="nav-mobile-foot">info@city-talks.gr</div>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn--accent" href="steile-apopsi.html">
+        Στείλε άποψη
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+<button class="nav-close" id="navclose" aria-label="Κλείσιμο μενού">
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+
+<!-- BREADCRUMB -->
+<div class="art-wrap">
+  <nav class="art-crumb" aria-label="Διαδρομή πλοήγησης">
+    <a href="index.html">Αρχική</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <a href="smart-cities.html">Smart Cities</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <span class="cur">Έξυπνοι Δήμοι &amp; Ψηφιακή Δημόσια Υγεία</span>
+  </nav>
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="art-head">
+  <div class="art-wrap">
+    <span class="kicker">Smart Cities</span>
+    <h1 class="art-h1">Έξυπνοι Δήμοι <em>&amp; Ψηφιακή Δημόσια Υγεία</em></h1>
+    <p class="art-overline">Σχετικά με την ΗΔΙΚΑ Α.Ε.</p>
+    <div class="art-byline">
+      <img src="public/guests/Ioannis-Karagiannis-0.jpg" alt="Ιωάννης Καραγιάννης" />
+      <div>
+        <div class="ab-name"><a href="arthrografoi.html">Ιωάννης Καραγιάννης</a></div>
+        <div class="ab-meta">ΗΔΙΚΑ Α.Ε.</div>
+      </div>
+      <div class="ab-sep" aria-hidden="true"></div>
+      <div class="ab-stamp">8 Ιανουαρίου 2025<br />6 λεπτά ανάγνωσης</div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div class="art-hero">
+  <div class="art-wrap">
+    <figure>
+      <img src="public/featured/HealthData.jpg" alt="Ψηφιακή δημόσια υγεία και διαχείριση ιατρικών δεδομένων" />
+    </figure>
+    <figcaption>Η αξιοποίηση των ψηφιακών δεδομένων υγείας στην υπηρεσία του πολίτη.</figcaption>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="art-wrap">
+  <div class="art-layout">
+    <article class="art-main">
+      <div class="art-body">
+        <p class="dropcap">Η αξιοποίηση της τεχνολογίας για την αναβάθμιση των υπηρεσιών δημόσιας υγείας, αναδεικνύει τις τεράστιες δυνατότητες που έχουμε ως χώρα να αξιοποιήσουμε τις ψηφιακές τεχνολογίες και τις καινοτομίες στην πληροφορική, ώστε να μεταμορφώσουμε τις παροχές υγείας προς τους συμπολίτες μας.</p>
+
+        <p>Σε αυτή την κατεύθυνση σημαντικό ρόλο μπορούν να διεκδικήσουν οι σύγχρονες πόλεις, οι σύγχρονοι Δήμοι. Οι Δήμοι που τόσο έχουν μεταμορφωθεί ψηφιακά τα τελευταία χρόνια, έχουν μπροστά τους την τεράστια πρόκληση να συμβάλουν από την πλευρά τους στην ψηφιακή επανάσταση που συντελείται στην δημόσια υγεία στην χώρα μας με παροχές στον κάθε δημότη της κάθε πόλης και του πλέον απομονωμένου χωριού, μέχρι και τον πιο ορεινό και απομακρυσμένο δήμο της Ελλάδας.</p>
+
+        <figure class="art-feature-quote">
+          <span class="qbig" aria-hidden="true">“</span>
+          <blockquote>Η ολοκλήρωση του κυβερνητικού σχεδιασμού και της υλοποίησης των ψηφιακών έργων που η ΗΔΙΚΑ υλοποιεί σήμερα, με χρηματοδότηση του Ταμείου Ανάκαμψης και Ανθεκτικότητας, θα βελτιώσει τις υπηρεσίες υγείας και την καθημερινότητα των πολιτών.</blockquote>
+          <cite>Ιωάννης Καραγιάννης — ΗΔΙΚΑ Α.Ε.</cite>
+        </figure>
+
+        <p>Η ολοκλήρωση του κυβερνητικού σχεδιασμού και της υλοποίησης των ψηφιακών έργων που η ΗΔΙΚΑ υλοποιεί σήμερα, με χρηματοδότηση του Ταμείου Ανάκαμψης και Ανθεκτικότητας, υπό από την καθοδήγηση των Υπουργείων Ψηφιακής Διακυβέρνησης και Υγείας, θα βελτιώσει τις υπηρεσίες υγείας και την καθημερινότητα των πολιτών. Απλά ενδεικτικά να αναφέρω την ψηφιοποίηση των ιατρικών αρχείων για το έργο του Εθνικού Ηλεκτρονικού Φακέλου Υγείας και τη δημιουργία ολοκληρωμένων πληροφοριακών συστημάτων, όπως αυτό της Διαχείρισης Ογκολογικών Ασθενών, έργα που διασφαλίζουν την αποτελεσματική και ασφαλή διαχείριση των δεδομένων των ασθενών.</p>
+
+        <p>Σε αυτή την μετάβαση, κρίσιμο ρόλο θα διαδραματίσει η ικανότητα των τοπικών συστημάτων υγείας να υιοθετήσουν τις ραγδαίες αλλαγές. Χρειάζεται, και ήδη υλοποιείται, η συνεχής επιμόρφωση των επαγγελματιών υγείας στις νέες τεχνολογίες.</p>
+
+        <p class="pull"><span class="qmark">«</span>Χρειαζόμαστε «έξυπνα» νοσοκομεία, τα οποία αποτελούν το μέλλον της ιατρικής περίθαλψης με αυτοματοποιημένες διαδικασίες, τηλεϊατρική και χρήση της τεχνητής νοημοσύνης για τη διάγνωση και τη θεραπεία.<span class="qmark">»</span></p>
+
+        <p>Χρειαζόμαστε «έξυπνα» νοσοκομεία, τα οποία αποτελούν το μέλλον της ιατρικής περίθαλψης με αυτοματοποιημένες διαδικασίες, τηλεϊατρική και χρήση της τεχνητής νοημοσύνης για τη διάγνωση και τη θεραπεία. Σε αυτή την κατεύθυνση η ΗΔΙΚΑ υλοποιεί σήμερα το εμβληματικό έργο «Βελτίωση της Ψηφιακής Ετοιμότητας των Νοσοκομείων – Αναβάθμιση πληροφοριακών συστημάτων &amp; υποδομών νοσοκομείων», χρηματοδοτούμενο από το Ταμείο Ανάκαμψης και Ανθεκτικότητας.</p>
+
+        <p>Μέσα από αυτό το έργο, τα ελληνικά νοσοκομεία μπαίνουν σε τροχιά ψηφιοποίησης, καθώς θα συνομιλούν την ίδια «ψηφιακή γλώσσα», δηλαδή θα έρθουν στο ίδιο ψηφιακό επίπεδο και θα διαλειτουργούν μεταξύ τους, ώστε οι γιατροί ανεξάρτητα από την περιοχή, την πόλη, το νομό που βρίσκονται να έχουν πρόσβαση στον εθνικό ατομικό ηλεκτρονικό φάκελο υγείας του ασθενή χωρίς ο ίδιος να υποχρεώνεται να προσκομίζει κάθε φορά τον έγχαρτο φάκελο με τις εξετάσεις του. Στόχος μας είναι το σύνολο των νοσοκομείων της χώρας να «επικοινωνούν», τόσο μεταξύ τους, όσο και με τον εθνικό ιατρικό φάκελο, το σύστημα ηλεκτρονικής συνταγογράφησης αλλά και οποιαδήποτε άλλη δομή του υπουργείου Υγείας.</p>
+
+        <p>Παράλληλα, σήμερα η Πολιτεία με το Εθνικό Πρόγραμμα Πρόληψης «Προλαμβάνω» που σχεδιάστηκε από το Υπουργείο Υγείας και υλοποιείται από την ΗΔΙΚΑ δεν περιμένει τους πολίτες να επισκεφτούν τον ιατρό, αλλά τους προσεγγίζει η ίδια, θεμελιώνοντας ένα νέο μοντέλο πρόληψης στη χώρα μας με επίκεντρο τον πολίτη. Το πρόγραμμα καλύπτει σχεδόν το σύνολο των πολιτών και στοχεύει στον έγκαιρο εντοπισμό των κυριότερων χρόνιων νοσημάτων (όπως ο καρκίνος και οι καρδιαγγειακές ασθένειες) που ευθύνονται για τους πρόωρους θανάτους στη χώρα μας, μέσω της καθιέρωσης δωρεάν προληπτικών διαγνωστικών εξετάσεων για τον καρκίνο του μαστού, τον καρκίνο του τραχήλου της μήτρας, τον καρκίνο του παχέος εντέρου και τον καρδιαγγειακό κίνδυνο.</p>
+
+        <p class="pull"><span class="qmark">«</span>Μέσα σε αυτή την ψηφιακή επανάσταση που συντελείται στον χώρο της δημόσιας υγείας, η τοπική αυτοδιοίκηση θα μπορούσε να επενδύσει στην ποιότητα των υπηρεσιών και των υποδομών για την παροχή υψηλού επιπέδου υγειονομικής περίθαλψης.<span class="qmark">»</span></p>
+
+        <p>Μέσα σε αυτή την ψηφιακή επανάσταση που συντελείται στον χώρο της δημόσιας υγείας, η τοπική αυτοδιοίκηση θα μπορούσε να επενδύσει στην ποιότητα των υπηρεσιών και των υποδομών για την παροχή υψηλού επιπέδου υγειονομικής περίθαλψης, παρέχοντας τα εχέγγυα για τη συνεχή αναβάθμιση και συντήρηση των τεχνολογικών υποδομών σε πρωτοβάθμιο επίπεδο υγείας.</p>
+
+        <p>Ωστόσο εκεί που θα μπορούσε να έχουν ένα εξίσου ενεργό ρόλο οι δήμοι είναι στο να συμβάλουν στην ψηφιακή εγγραμματοσύνη υγείας των δημοτών τους. Ως όρος η ψηφιακή εγγραμματοσύνη υγείας έχει αποκτήσει σημαντική προσοχή τα τελευταία χρόνια, λόγω της αυξανόμενης χρήσης των νέων τεχνολογιών στο χώρο της υγείας. Θα μπορούσαμε να ορίσουμε ότι περιλαμβάνει την ικανότητα της αναζήτησης, εύρεσης, κατανόησης και εκτίμησης ιατρικών πληροφοριών από ηλεκτρονικές πηγές και την εφαρμογή της αποκτηθείσας γνώσης για την επίλυση προβλημάτων υγείας.</p>
+
+        <p>Οι πολίτες σήμερα αντιμετωπίζουν μια σειρά προκλήσεων στον ψηφιακό κόσμο. Πολλοί από αυτούς δεν έχουν βασικές γνώσεις για τη χρήση του διαδικτύου και των ψηφιακών εργαλείων, γεγονός που εντείνει τις ανισότητες. Ενώ οι ευάλωτες κοινωνικές ομάδες, όπως οι ηλικιωμένοι και τα άτομα χαμηλότερης εκπαίδευσης, κινδυνεύουν να μείνουν εκτός του ψηφιακού μετασχηματισμού της υγείας.</p>
+
+        <p>Είναι δεδομένο ότι η ψηφιακή εγγραμματοσύνη στην υγεία αποτελεί πρωταρχικό και επίκαιρο στόχο της πολιτείας στο πεδίο της δημόσιας υγείας. Για την επίτευξη αυτού του στόχου καίριο ρόλο διαδραματίζουν οι δράσεις προαγωγής και αγωγής υγείας και οι στρατηγικές επικοινωνίας στους πολίτες. Η ΗΔΙΚΑ, σε συνεργασία με τα Υπουργεία Υγείας και Ψηφιακής Διακυβέρνησης δουλεύει συστηματικά προς αυτή την κατεύθυνση.</p>
+
+        <p class="pull"><span class="qmark">«</span>Σε αυτή την εθνική προσπάθεια και οι Δήμοι μπορούν να συμβάλουν από την πλευρά τους, με Εκπαιδευτικά Προγράμματα για την δημιουργία ευέλικτων και διαδραστικών προγραμμάτων ψηφιακής εκπαίδευσης για όλες τις ηλικίες και ομάδες.<span class="qmark">»</span></p>
+
+        <p>Σε αυτή την εθνική προσπάθεια και οι Δήμοι μπορούν να συμβάλουν από την πλευρά τους, με Εκπαιδευτικά Προγράμματα για την δημιουργία ευέλικτων και διαδραστικών προγραμμάτων ψηφιακής εκπαίδευσης για όλες τις ηλικίες και ομάδες.</p>
+
+        <p>Είναι προφανές ότι ο πιο ενεργός ρόλος της πρωτοβάθμιας αυτοδιοίκησης στο χώρο της υγείας μόνο θετικά και μετρήσιμα αποτελέσματα και οφέλη για τους δημότες τους θα έχει.</p>
+      </div>
+
+      <!-- AUTHOR BIO -->
+      <div class="art-bio">
+        <img src="public/guests/Ioannis-Karagiannis-0.jpg" alt="Ιωάννης Καραγιάννης" />
+        <div>
+          <span class="bio-kicker">Σχετικά με τον αρθρογράφο</span>
+          <h3><a href="arthrografoi.html">Ιωάννης Καραγιάννης</a></h3>
+          <div class="bio-role">ΗΔΙΚΑ Α.Ε. — Ψηφιακή Υγεία</div>
+          <p>Στέλεχος της ΗΔΙΚΑ Α.Ε., του φορέα που υλοποιεί τα μεγάλα ψηφιακά έργα δημόσιας υγείας της χώρας — από τον Εθνικό Ηλεκτρονικό Φάκελο Υγείας και τη Διαχείριση Ογκολογικών Ασθενών μέχρι το Εθνικό Πρόγραμμα Πρόληψης «Προλαμβάνω». Γράφει για τη συνάντηση της τεχνολογίας με την τοπική αυτοδιοίκηση και τον ρόλο των Δήμων στην ψηφιακή εγγραμματοσύνη υγείας.</p>
+          <a class="bio-link" href="arthrografoi.html">Όλα τα άρθρα του αρθρογράφου
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ASIDE -->
+    <aside class="art-aside" aria-label="Πληροφορίες άρθρου">
+      <div class="as-title">Κοινοποίηση</div>
+      <div class="art-share">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://city-talks.gr/arthro-eksypnoi-dimoi.html" aria-label="Κοινοποίηση στο Facebook"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://city-talks.gr/arthro-eksypnoi-dimoi.html" aria-label="Κοινοποίηση στο LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3zM5 10h3v9H5zM11 10h3v1.3c.5-.8 1.5-1.5 3-1.5 2.5 0 3 1.7 3 4V19h-3v-4c0-1-.4-1.7-1.4-1.7S14 14 14 15v4h-3z"/></svg></a>
+        <a href="https://x.com/intent/tweet?url=https://city-talks.gr/arthro-eksypnoi-dimoi.html" aria-label="Κοινοποίηση στο X"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5z"/></svg></a>
+        <a href="mailto:?subject=Έξυπνοι Δήμοι &amp; Ψηφιακή Δημόσια Υγεία&amp;body=https://city-talks.gr/arthro-eksypnoi-dimoi.html" aria-label="Αποστολή με email"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+      <div class="art-facts">
+        <div class="art-fact">
+          <span class="af-k">Θεματική</span>
+          <span class="af-v">Smart Cities · Ψηφιακή Υγεία</span>
+        </div>
+        <div class="art-fact">
+          <span class="af-k">Φορέας</span>
+          <span class="af-v">ΗΔΙΚΑ Α.Ε.</span>
+        </div>
+        <div class="art-fact">
+          <span class="af-k">Χρηματοδότηση</span>
+          <span class="af-v">Ταμείο Ανάκαμψης &amp; Ανθεκτικότητας</span>
+        </div>
+        <div class="art-fact">
+          <span class="af-k">Δημοσίευση</span>
+          <span class="af-v">8 Ιανουαρίου 2025</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- RELATED ARTICLES -->
+<section class="art-related" aria-label="Σχετικά άρθρα">
+  <div class="art-wrap">
+    <div class="rel-head">
+      <h2>Σχετικά άρθρα</h2>
+      <a class="seclink" href="smart-cities.html">Όλα τα Smart Cities
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="rel-grid">
+      <article class="rel-card">
+        <figure class="rc-fig"><img src="public/featured/Sustainable-Waste-Management.jpg" alt="Βιώσιμη διαχείριση απορριμμάτων" /></figure>
+        <div class="rc-body">
+          <span class="rc-cat"><span class="kicker">Smart Cities</span></span>
+          <h3><a href="arthro-eksypnoi-dimoi.html">Τέλος στην ταφή απορριμμάτων</a></h3>
+          <p class="rc-ex">Η Ελλάδα κατέχει ένα από τα υψηλότερα ποσοστά ταφής απορριμμάτων στην ΕΕ, φτάνοντας το 80%. Είναι ώρα για επενδύσεις στη βιώσιμη διαχείριση.</p>
+          <div class="rc-auth">Δημήτρης Πατσιαρίκας</div>
+        </div>
+      </article>
+      <article class="rel-card">
+        <figure class="rc-fig"><img src="public/hero/city-talks-04-urban-smart-cities.jpg" alt="Πράσινος τουρισμός και βιώσιμη τοπική ανάπτυξη" /></figure>
+        <div class="rc-body">
+          <span class="rc-cat"><span class="kicker">Smart Cities</span></span>
+          <h3><a href="arthro-eksypnoi-dimoi.html">Ο Πράσινος Τουρισμός ως μοχλός τοπικής ανάπτυξης</a></h3>
+          <p class="rc-ex">Πώς η αειφορική αξιοποίηση των πόρων μετατρέπει τον τουρισμό σε εργαλείο βιώσιμης ανάπτυξης για τους Δήμους της περιφέρειας.</p>
+          <div class="rc-auth">Δημήτρης Πατσιαρίκας</div>
+        </div>
+      </article>
+      <article class="rel-card">
+        <figure class="rc-fig"><img src="public/featured/HealthData.jpg" alt="HARMONIA — ψηφιακή πλατφόρμα προστασίας του αστικού περιβάλλοντος" /></figure>
+        <div class="rc-body">
+          <span class="rc-cat"><span class="kicker">Smart Cities</span></span>
+          <h3><a href="arthro-eksypnoi-dimoi.html">HARMONIA: ψηφιακή πλατφόρμα για την προστασία του Πειραιά</a></h3>
+          <p class="rc-ex">Μια ψηφιακή πλατφόρμα που βάζει την τεχνολογία και τα δεδομένα στην υπηρεσία της προστασίας του αστικού περιβάλλοντος.</p>
+          <div class="rc-auth">City Talks</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="public/logo/city-talks-logo-white.png" alt="City Talks" />
+        <p>Ανεξάρτητη επιθεώρηση Τοπικής Αυτοδιοίκησης &amp; Έξυπνων Πόλεων. Ας μιλήσουμε για τους Δήμους.</p>
+        <a class="foot-mail" href="mailto:info@city-talks.gr">
+          <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          info@city-talks.gr
+        </a>
+      </div>
+      <div class="foot-col">
+        <h5>Θεματικές</h5>
+        <a href="opinions.html">Opinions</a>
+        <a href="smart-cities.html">Smart Cities</a>
+        <a href="arthrografoi.html">Αρθρογράφοι</a>
+        <a href="podcasts.html">Podcasts</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επιθεώρηση</h5>
+        <a href="index.html">Αρχική</a>
+        <a href="opinions.html">Το τεύχος</a>
+        <a href="steile-apopsi.html">Newsletter</a>
+        <a href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επικοινωνία</h5>
+        <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+        <a href="oroi-xrisis">Όροι χρήσης</a>
+        <a href="politiki-aporritou">Πολιτική απορρήτου</a>
+        <a href="cookies">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copy">© 2026 City Talks · city-talks.gr · Με την επιφύλαξη παντός δικαιώματος.</span>
+      <div class="foot-social">
+        <a href="https://www.facebook.com/citytalks.gr" aria-label="Facebook"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.linkedin.com/company/city-talks-gr" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3zM5 10h3v9H5zM11 10h3v1.3c.5-.8 1.5-1.5 3-1.5 2.5 0 3 1.7 3 4V19h-3v-4c0-1-.4-1.7-1.4-1.7S14 14 14 15v4h-3z"/></svg></a>
+        <a href="https://x.com/citytalks_gr" aria-label="X"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5z"/></svg></a>
+        <a href="mailto:info@city-talks.gr" aria-label="Email"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var burger=document.getElementById('burger');
+    var nav=document.getElementById('navlinks');
+    var close=document.getElementById('navclose');
+    var scrim=document.getElementById('scrim');
+    var isOpen=false;
+    var mq=window.matchMedia('(max-width:980px)');
+
+    // Make off-canvas panel unreachable to keyboard/SR when closed (only at mobile widths).
+    function syncInert(){
+      if(mq.matches && !isOpen){
+        nav.setAttribute('aria-hidden','true');
+        nav.setAttribute('inert','');
+      }else{
+        nav.removeAttribute('aria-hidden');
+        nav.removeAttribute('inert');
+      }
+    }
+
+    function focusables(){
+      return Array.prototype.slice.call(
+        nav.querySelectorAll('a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])')
+      ).concat([close]);
+    }
+
+    function open(){
+      isOpen=true;
+      nav.classList.add('open');
+      document.body.classList.add('menu-open');
+      burger.setAttribute('aria-expanded','true');
+      syncInert();
+      close.focus();
+    }
+    function shut(returnFocus){
+      isOpen=false;
+      nav.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded','false');
+      syncInert();
+      if(returnFocus!==false)burger.focus();
+    }
+
+    burger.addEventListener('click',open);
+    close.addEventListener('click',function(){shut();});
+    scrim.addEventListener('click',function(){shut();});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){shut(false);});});
+
+    document.addEventListener('keydown',function(e){
+      if(!isOpen)return;
+      if(e.key==='Escape'){shut();return;}
+      if(e.key==='Tab'){
+        var f=focusables();
+        if(!f.length)return;
+        var first=f[0],last=f[f.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      }
+    });
+
+    // Re-sync when crossing the breakpoint (e.g. resize from mobile to desktop while open).
+    (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){
+      if(!mq.matches&&isOpen)shut(false);
+      syncInert();
+    });
+    syncInert();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Opinions — Απόψεις για την Τοπική Αυτοδιοίκηση | CITY TALKS</title>
+<meta name="description" content="Opinions: απόψεις, αναλύσεις και τοποθετήσεις για την Τοπική Αυτοδιοίκηση και τους Δήμους — από τους ανθρώπους που τους γνωρίζουν από μέσα. Πολεοδομία, νερό, στελέχωση των ΟΤΑ και πολιτική." />
+<link rel="icon" type="image/png" href="public/logo/city-talks-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  /* ---------- OPINIONS CATEGORY PAGE (page-scoped) ---------- */
+  .op-hero{border-bottom:3px double var(--ink);padding:clamp(40px,5vw,72px) 0 clamp(34px,4vw,52px);}
+  .op-hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(28px,4vw,56px);align-items:end;}
+  .op-crumb{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:20px;}
+  .op-crumb a:hover{color:var(--accent);}
+  .op-crumb .sep{color:var(--accent);padding:0 8px;}
+  .op-hero h1{font-size:clamp(54px,9vw,124px);font-weight:700;line-height:.9;letter-spacing:-.03em;margin:0;}
+  .op-hero h1 em{font-style:italic;color:var(--accent);font-weight:500;}
+  .op-hero .op-gr{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(20px,2.4vw,30px);color:var(--ink-soft);margin-top:12px;}
+  .op-standfirst{font-family:var(--serif);font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:var(--ink-soft);border-left:2px solid var(--accent);padding-left:20px;}
+  .op-standfirst strong{color:var(--ink);font-weight:600;}
+  .op-meta-row{display:flex;flex-wrap:wrap;gap:0;margin-top:26px;border-top:1px solid var(--ink);padding-top:18px;}
+  .op-meta{padding-right:30px;margin-right:30px;border-right:1px solid var(--line);}
+  .op-meta:last-child{border-right:none;margin-right:0;padding-right:0;}
+  .op-meta .n{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1;display:block;}
+  .op-meta .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-top:6px;}
+  @media(max-width:880px){.op-hero-grid{grid-template-columns:1fr;gap:26px;}}
+
+  /* layout: lead + sidebar */
+  .op-main{display:grid;grid-template-columns:1fr 312px;gap:clamp(28px,4vw,56px);align-items:start;}
+  @media(max-width:980px){.op-main{grid-template-columns:1fr;}}
+
+  /* lead article */
+  .op-lead{border-top:2px solid var(--ink);padding-top:26px;}
+  .op-lead-fig{position:relative;overflow:hidden;border:1px solid var(--line);margin-bottom:22px;}
+  .op-lead-fig img{width:100%;height:clamp(280px,40vw,470px);object-fit:cover;filter:contrast(1.04) saturate(.94) sepia(.06);transition:transform .6s ease;}
+  .op-lead:hover .op-lead-fig img{transform:scale(1.03);}
+  .op-lead-tag{position:absolute;left:0;top:0;background:var(--accent);color:var(--white);font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:7px 13px;}
+  .op-lead h2{font-size:clamp(32px,4.4vw,58px);font-weight:700;line-height:.98;letter-spacing:-.02em;margin-bottom:18px;}
+  .op-lead h2 a:hover{color:var(--accent);}
+  .op-lead-body{column-count:2;column-gap:34px;font-size:16px;line-height:1.62;color:var(--ink-soft);}
+  .op-lead-body p{margin:0 0 14px;}
+  .op-dropcap::first-letter{font-family:var(--serif);font-weight:700;float:left;font-size:74px;line-height:.74;padding:6px 10px 0 0;color:var(--accent);}
+  .op-readmore{font-family:var(--sans);font-weight:600;font-size:14px;color:var(--accent);display:inline-flex;align-items:center;gap:7px;margin-top:20px;transition:gap .2s;}
+  .op-readmore:hover{gap:12px;}
+  .op-readmore svg{width:15px;height:15px;}
+  @media(max-width:600px){.op-lead-body{column-count:1;}}
+
+  /* grid of remaining opinion articles */
+  .op-sub-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-bottom:2px solid var(--ink);padding-bottom:13px;margin:clamp(48px,6vw,72px) 0 34px;}
+  .op-sub-head h2{font-size:clamp(24px,3vw,36px);font-weight:600;}
+  .op-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--line);}
+  .op-card{border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;background:var(--paper);transition:background .2s;}
+  .op-card:hover{background:var(--white);}
+  .op-card-fig{overflow:hidden;border-bottom:1px solid var(--line);}
+  .op-card-fig img{width:100%;height:200px;object-fit:cover;filter:contrast(1.03) saturate(.92) sepia(.05);transition:transform .5s ease;}
+  .op-card:hover .op-card-fig img{transform:scale(1.05);}
+  .op-card-body{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1;}
+  .op-card .oc-cat{margin-bottom:10px;}
+  .op-card h3{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.1;letter-spacing:-.01em;margin-bottom:10px;}
+  .op-card h3 a:hover{color:var(--accent);}
+  .op-card .oc-excerpt{font-size:14.5px;color:var(--ink-soft);line-height:1.55;flex:1;}
+  .op-card .oc-byline{display:flex;align-items:center;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line);}
+  .op-card .oc-byline img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:1px solid var(--line);filter:grayscale(.25);}
+  .op-card .oc-byline .nm{font-size:13px;font-weight:700;line-height:1.2;}
+  .op-card .oc-byline .nm a:hover{color:var(--accent);}
+  /* text-only opinion cards */
+  .op-card.op-text .op-card-body{background:var(--paper-2);justify-content:space-between;}
+  .op-card.op-text .oc-quotemark{font-family:var(--serif);font-size:54px;line-height:.6;color:var(--accent);opacity:.5;height:30px;}
+  @media(max-width:980px){.op-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.op-grid{grid-template-columns:1fr;}}
+
+  /* sidebar */
+  .op-side{position:sticky;top:72px;display:flex;flex-direction:column;gap:28px;}
+  @media(max-width:980px){.op-side{position:static;flex-direction:row;flex-wrap:wrap;}.op-side>*{flex:1;min-width:260px;}}
+  .op-side-box{border:1px solid var(--ink);padding:24px 22px;background:var(--paper-2);}
+  .op-side-box .kicker{margin-bottom:14px;}
+  .op-side-box h3{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.1;margin-bottom:10px;}
+  .op-most{list-style:none;padding:0;margin:0;}
+  .op-most li{display:grid;grid-template-columns:auto 1fr;gap:13px;padding:14px 0;border-top:1px solid var(--line);align-items:start;}
+  .op-most li:first-child{border-top:none;padding-top:4px;}
+  .op-most .mn{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--accent);line-height:1;}
+  .op-most .mt{font-family:var(--serif);font-size:15.5px;font-weight:600;line-height:1.2;letter-spacing:-.01em;}
+  .op-most .mt a:hover{color:var(--accent);}
+  .op-most .ma{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin-top:5px;}
+  /* sidebar CTA box */
+  .op-cta-box{border:1px solid var(--ink);padding:26px 24px;background:var(--ink);color:var(--paper);}
+  .op-cta-box .kicker{color:#e8a092;margin-bottom:14px;}
+  .op-cta-box h3{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.06;color:var(--paper);margin-bottom:10px;}
+  .op-cta-box h3 em{font-style:italic;color:#e8a092;font-weight:500;}
+  .op-cta-box p{color:#d9cfb9;font-size:14.5px;line-height:1.55;margin:0 0 20px;}
+  .op-cta-box .btn--accent:focus-visible{outline-color:#e8a092;}
+
+  /* section CTA banner */
+  .op-banner{margin-top:clamp(48px,6vw,72px);border:3px double var(--ink);padding:clamp(32px,4vw,48px);display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;background:var(--paper-2);}
+  .op-banner .bl{max-width:54ch;}
+  .op-banner .kicker{margin-bottom:12px;}
+  .op-banner h2{font-size:clamp(24px,3vw,38px);font-weight:600;line-height:1.04;margin-bottom:10px;}
+  .op-banner h2 em{font-style:italic;color:var(--accent);font-weight:500;}
+  .op-banner p{color:var(--ink-soft);font-size:15.5px;margin:0;}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tline">
+      <span>Κυριακή, 28 Ιουνίου 2026</span>
+      <span class="dot">●</span>
+      <span>Έτος Α′ · Τεύχος 12</span>
+      <span class="dot">●</span>
+      <span>Θεσσαλονίκη — Αθήνα</span>
+    </div>
+    <div class="right">
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+    </div>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-inner">
+      <div class="mast-edition">
+        <b>Ανεξάρτητη Επιθεώρηση</b><br />
+        Τοπική Αυτοδιοίκηση<br />
+        &amp; Έξυπνες Πόλεις
+      </div>
+      <a class="mast-logo" href="index.html" aria-label="City Talks — αρχική">
+        <img src="public/logo/city-talks-logo-ink.png" alt="City Talks — λογότυπο" />
+      </a>
+      <div class="mast-right">
+        <p class="mast-sub">«Ας μιλήσουμε για τους Δήμους.»</p>
+        <button class="burger" id="burger" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="navlinks">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="mainnav" id="top">
+  <div class="wrap">
+    <a class="nav-scroll-logo" href="index.html" aria-label="City Talks">
+      <img src="public/logo/city-talks-mark.png" alt="" /> City&nbsp;Talks
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="opinions.html" aria-current="page">Opinions</a>
+      <a href="smart-cities.html">Smart Cities</a>
+      <a href="arthrografoi.html">Αρθρογράφοι</a>
+      <a href="steile-apopsi.html">Let's Talk</a>
+      <a href="podcasts.html">Podcasts</a>
+      <div class="nav-mobile-cta">
+        <a class="btn btn--accent" href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="nav-mobile-foot">info@city-talks.gr</div>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn--accent" href="steile-apopsi.html">
+        Στείλε άποψη
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+<button class="nav-close" id="navclose" aria-label="Κλείσιμο μενού">
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+
+<!-- CATEGORY HEADER -->
+<section class="op-hero">
+  <div class="wrap">
+    <div class="op-crumb">
+      <a href="index.html">Αρχική</a><span class="sep" aria-hidden="true">/</span><span>Κατηγορία</span>
+    </div>
+    <div class="op-hero-grid">
+      <div>
+        <span class="kicker">Κατηγορία</span>
+        <h1><em>Opinions</em></h1>
+        <p class="op-gr">Απόψεις &amp; Τοποθετήσεις</p>
+        <div class="op-meta-row">
+          <div class="op-meta"><span class="n">07</span><span class="l">Άρθρα</span></div>
+          <div class="op-meta"><span class="n">04</span><span class="l">Φωνές</span></div>
+          <div class="op-meta"><span class="n">Α′</span><span class="l">Έτος έκδοσης</span></div>
+        </div>
+      </div>
+      <p class="op-standfirst">Η στήλη όπου φιλοξενούμε <strong>τις απόψεις των ανθρώπων της αυτοδιοίκησης</strong> για όσα κρίνουν τη ζωή στους Δήμους — πολεοδομία, διαχείριση νερού, στελέχωση των ΟΤΑ και την ίδια την πολιτική. Λόγος ευθύς, από όσους γνωρίζουν την τοπική αυτοδιοίκηση από μέσα.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:clamp(36px,4vw,56px);">
+  <div class="wrap">
+    <div class="op-main">
+
+      <!-- LEFT COLUMN: lead + grid -->
+      <div>
+        <!-- LEAD ARTICLE -->
+        <article class="op-lead">
+          <figure class="op-lead-fig">
+            <img src="public/featured/poleodomia.jpg" alt="Πολεοδομία και Δήμοι — αστικό τοπίο σε τουριστικό δήμο" />
+            <span class="op-lead-tag">Κύριο θέμα</span>
+          </figure>
+          <span class="lead-cat" style="display:block;margin-bottom:12px;"><span class="kicker">Opinions</span></span>
+          <h2><a href="arthro-poleodomia.html">Πολεοδομία και Δήμοι</a></h2>
+          <div class="byline">
+            <img src="public/guests/theodosis-ch-001.jpg" alt="Θεοδόσης Χατζηιωαννίδης" />
+            <div>
+              <div class="bl-name"><a href="arthrografos-theodosis.html">Θεοδόσης Χατζηιωαννίδης</a></div>
+              <div class="bl-meta">Οικονομολόγος, MBA · Στέλεχος Τοπικής Αυτοδιοίκησης</div>
+            </div>
+          </div>
+          <div class="op-lead-body">
+            <p class="op-dropcap">Τοπική υπόθεση η ανάπτυξη: μια πολύκροτη δικαστική υπόθεση για την πολεοδομία σε τουριστικούς δήμους της Χαλκιδικής ανέδειξε με τον πιο γλαφυρό τρόπο τις δομικές παθογένειες ενός συστήματος που, αντί να υπηρετεί τον πολίτη, συχνά τον εγκλωβίζει σε ατέρμονες γραφειοκρατικές διαδικασίες.</p>
+            <p>Το ζήτημα της πολεοδομίας δεν είναι μόνο τεχνικό· είναι βαθιά πολιτικό και κοινωνικό. Αφορά το πώς οραματιζόμαστε τις πόλεις και τους οικισμούς μας, ποιον εξυπηρετεί ο σχεδιασμός και με ποια κριτήρια κατανέμεται ο δημόσιος χώρος ανάμεσα στις ανάγκες των κατοίκων και τις πιέσεις της ανάπτυξης.</p>
+            <p>Η ενίσχυση των υπηρεσιών των δήμων, η ψηφιοποίηση των διαδικασιών και η διαφάνεια στις αδειοδοτήσεις δεν αποτελούν πολυτέλεια, αλλά αναγκαία προϋπόθεση για να ξαναχτιστεί η σχέση εμπιστοσύνης μεταξύ πολίτη και αυτοδιοίκησης.</p>
+          </div>
+          <a class="op-readmore" href="arthro-poleodomia.html">Συνέχεια ανάγνωσης
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <!-- SUB HEAD -->
+        <div class="op-sub-head">
+          <div>
+            <span class="kicker ink">Όλες οι απόψεις</span>
+            <h2 style="margin-top:10px;">Περισσότερες φωνές</h2>
+          </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="op-grid">
+          <!-- Διαχείριση Νερού -->
+          <article class="op-card">
+            <figure class="op-card-fig"><img src="public/featured/DiaxeirisiNerou.jpg" alt="Διαχείριση Νερού — υδάτινοι πόροι" /></figure>
+            <div class="op-card-body">
+              <span class="oc-cat"><span class="kicker">Opinions</span></span>
+              <h3><a href="arthro-poleodomia.html">Διαχείριση Νερού</a></h3>
+              <p class="oc-excerpt">Οι υδατικοί πόροι ως παράγοντας ανάπτυξης και ποιότητας ζωής — μια στρατηγική προτεραιότητα για κάθε Δήμο.</p>
+              <div class="oc-byline">
+                <img src="public/guests/patty-0001.jpg" alt="Πάττη Πασχαλίδου" />
+                <span class="nm"><a href="arthrografoi.html">Πάττη Πασχαλίδου</a></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Υποστελέχωση των ΟΤΑ -->
+          <article class="op-card">
+            <figure class="op-card-fig"><img src="public/featured/prosleipseis.jpg" alt="Υποστελέχωση των ΟΤΑ και προσλήψεις στους Δήμους" /></figure>
+            <div class="op-card-body">
+              <span class="oc-cat"><span class="kicker">Opinions</span></span>
+              <h3><a href="arthro-poleodomia.html">Υποστελέχωση των ΟΤΑ — Προσλήψεις μόνο στα χαρτιά</a></h3>
+              <p class="oc-excerpt">Καποδίστριας &amp; Καλλικράτης άλλαξαν τους Δήμους· οι προσλήψεις όμως μένουν στα χαρτιά.</p>
+              <div class="oc-byline">
+                <img src="public/guests/Evlampia-Mpouroutzi-00.jpg" alt="Μπέττυ Μπουρουτζή" />
+                <span class="nm"><a href="arthrografoi.html">Μπέττυ Μπουρουτζή</a></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Το λεξιλόγιο -->
+          <article class="op-card">
+            <figure class="op-card-fig"><img src="public/featured/to-lexilogio.jpg" alt="Το λεξιλόγιο ενός αυτοδιοικητικού ανθρώπου" /></figure>
+            <div class="op-card-body">
+              <span class="oc-cat"><span class="kicker">Opinions</span></span>
+              <h3><a href="arthro-poleodomia.html">Το λεξιλόγιο ενός αυτοδιοικητικού ανθρώπου</a></h3>
+              <p class="oc-excerpt">33 χρόνια στην αυτοδιοίκηση: Αυτοτέλεια, Οργάνωση, Αποτελεσματικότητα, Ποιότητα Ζωής.</p>
+              <div class="oc-byline">
+                <img src="public/guests/evi-lapa.jpg" alt="Εύη Λάππα" />
+                <span class="nm"><a href="arthrografoi.html">Εύη Λάππα</a></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Η Πολιτική και οι Πολιτικοί (text) -->
+          <article class="op-card op-text">
+            <div class="op-card-body">
+              <div>
+                <span class="oc-quotemark" aria-hidden="true">«</span>
+                <span class="oc-cat" style="margin-top:10px;"><span class="kicker ink">Opinions · Σχόλιο</span></span>
+                <h3 style="margin-top:8px;"><a href="arthro-poleodomia.html">Η Πολιτική και οι Πολιτικοί</a></h3>
+                <p class="oc-excerpt">Ασχολούμαστε με την πολιτική κυρίως προεκλογικά· ας μιλήσουμε ουσιαστικά.</p>
+              </div>
+              <div class="oc-byline">
+                <img src="public/guests/patty-0001.jpg" alt="Πάττη Πασχαλίδου" />
+                <span class="nm"><a href="arthrografoi.html">Πάττη Πασχαλίδου</a></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Μετατάξεις (text) -->
+          <article class="op-card op-text">
+            <div class="op-card-body">
+              <div>
+                <span class="oc-quotemark" aria-hidden="true">«</span>
+                <span class="oc-cat" style="margin-top:10px;"><span class="kicker ink">Opinions · Σχόλιο</span></span>
+                <h3 style="margin-top:8px;"><a href="arthro-poleodomia.html">Οι μετατάξεις και η κινητικότητα στους Δήμους</a></h3>
+                <p class="oc-excerpt">Από τον Καποδίστρια ως σήμερα: η αφαίμαξη προσωπικού ως τροχοπέδη για τους μικρούς Δήμους.</p>
+              </div>
+              <div class="oc-byline">
+                <img src="public/guests/theodosis-ch-001.jpg" alt="Θεοδόσης Χατζηιωαννίδης" />
+                <span class="nm"><a href="arthrografos-theodosis.html">Θεοδόσης Χατζηιωαννίδης</a></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ΠΕΠ Αττικής (text) -->
+          <article class="op-card op-text">
+            <div class="op-card-body">
+              <div>
+                <span class="oc-quotemark" aria-hidden="true">«</span>
+                <span class="oc-cat" style="margin-top:10px;"><span class="kicker ink">Opinions · Ανάλυση</span></span>
+                <h3 style="margin-top:8px;"><a href="arthro-poleodomia.html">ΠΕΠ Αττικής — Επιδότηση έως 60-65%</a></h3>
+                <p class="oc-excerpt">Ενίσχυση παραγωγικών επενδύσεων για εκσυγχρονισμό &amp; ανάκαμψη.</p>
+              </div>
+              <div class="oc-byline">
+                <span class="nm"><a href="arthrografoi.html">City Talks</a></span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- SECTION CTA BANNER -->
+        <div class="op-banner">
+          <div class="bl">
+            <span class="kicker">Let's Talk</span>
+            <h2>Έχεις <em>άποψη</em> για τους Δήμους;</h2>
+            <p>Η στήλη Opinions είναι ανοιχτή σε αιρετούς, στελέχη και πολίτες. Στείλε μας το κείμενό σου και γίνε μέρος της συζήτησης για την τοπική αυτοδιοίκηση.</p>
+          </div>
+          <a class="btn btn--accent" href="steile-apopsi.html">Στείλε άποψη
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="op-side">
+        <div class="op-side-box">
+          <span class="kicker ink">Δημοφιλή · Opinions</span>
+          <ol class="op-most">
+            <li>
+              <span class="mn">01</span>
+              <div>
+                <div class="mt"><a href="arthro-poleodomia.html">Πολεοδομία και Δήμοι</a></div>
+                <div class="ma">Θ. Χατζηιωαννίδης</div>
+              </div>
+            </li>
+            <li>
+              <span class="mn">02</span>
+              <div>
+                <div class="mt"><a href="arthro-poleodomia.html">Υποστελέχωση των ΟΤΑ</a></div>
+                <div class="ma">Μπ. Μπουρουτζή</div>
+              </div>
+            </li>
+            <li>
+              <span class="mn">03</span>
+              <div>
+                <div class="mt"><a href="arthro-poleodomia.html">Διαχείριση Νερού</a></div>
+                <div class="ma">Π. Πασχαλίδου</div>
+              </div>
+            </li>
+            <li>
+              <span class="mn">04</span>
+              <div>
+                <div class="mt"><a href="arthro-poleodomia.html">Το λεξιλόγιο ενός αυτοδιοικητικού ανθρώπου</a></div>
+                <div class="ma">Ε. Λάππα</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="op-cta-box">
+          <span class="kicker">Newsletter</span>
+          <h3>Κάνε <em>City Talks.</em></h3>
+          <p>Οι σημαντικότερες απόψεις για τους Δήμους, κάθε εβδομάδα στο email σου.</p>
+          <a class="btn btn--accent" href="index.html#newsletter">Εγγραφή
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="op-side-box">
+          <span class="kicker ink">Επίσης</span>
+          <h3>Smart Cities</h3>
+          <p style="font-size:14.5px;color:var(--ink-soft);line-height:1.55;margin:0 0 16px;">Η τεχνολογία στην υπηρεσία της αυτοδιοίκησης: ψηφιακή υγεία, βιώσιμη διαχείριση και έξυπνες πλατφόρμες.</p>
+          <a class="op-readmore" href="smart-cities.html">Δες τα άρθρα Smart Cities
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE STRIP -->
+<section class="quote">
+  <div class="wrap">
+    <blockquote><span class="mark">«</span>Your Opinion Matters.<span class="mark">»</span></blockquote>
+    <cite>City Talks — Η συζήτηση ξεκινά από τον Δήμο σου</cite>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="public/logo/city-talks-logo-white.png" alt="City Talks" />
+        <p>Ανεξάρτητη επιθεώρηση Τοπικής Αυτοδιοίκησης &amp; Έξυπνων Πόλεων. Ας μιλήσουμε για τους Δήμους.</p>
+        <a class="foot-mail" href="mailto:info@city-talks.gr">
+          <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          info@city-talks.gr
+        </a>
+      </div>
+      <div class="foot-col">
+        <h5>Θεματικές</h5>
+        <a href="opinions.html">Opinions</a>
+        <a href="smart-cities.html">Smart Cities</a>
+        <a href="arthrografoi.html">Αρθρογράφοι</a>
+        <a href="podcasts.html">Podcasts</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επιθεώρηση</h5>
+        <a href="index.html">Αρχική</a>
+        <a href="opinions.html">Το τεύχος</a>
+        <a href="steile-apopsi.html">Newsletter</a>
+        <a href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επικοινωνία</h5>
+        <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+        <a href="oroi-xrisis">Όροι χρήσης</a>
+        <a href="politiki-aporritou">Πολιτική απορρήτου</a>
+        <a href="cookies">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copy">© 2026 City Talks · city-talks.gr · Με την επιφύλαξη παντός δικαιώματος.</span>
+      <div class="foot-social">
+        <a href="https://www.facebook.com/citytalks.gr" aria-label="Facebook"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.linkedin.com/company/city-talks-gr" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3zM5 10h3v9H5zM11 10h3v1.3c.5-.8 1.5-1.5 3-1.5 2.5 0 3 1.7 3 4V19h-3v-4c0-1-.4-1.7-1.4-1.7S14 14 14 15v4h-3z"/></svg></a>
+        <a href="https://x.com/citytalks_gr" aria-label="X"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5z"/></svg></a>
+        <a href="mailto:info@city-talks.gr" aria-label="Email"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var burger=document.getElementById('burger');
+    var nav=document.getElementById('navlinks');
+    var close=document.getElementById('navclose');
+    var scrim=document.getElementById('scrim');
+    var isOpen=false;
+    var mq=window.matchMedia('(max-width:980px)');
+
+    // Make off-canvas panel unreachable to keyboard/SR when closed (only at mobile widths).
+    function syncInert(){
+      if(mq.matches && !isOpen){
+        nav.setAttribute('aria-hidden','true');
+        nav.setAttribute('inert','');
+      }else{
+        nav.removeAttribute('aria-hidden');
+        nav.removeAttribute('inert');
+      }
+    }
+
+    function focusables(){
+      return Array.prototype.slice.call(
+        nav.querySelectorAll('a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])')
+      ).concat([close]);
+    }
+
+    function open(){
+      isOpen=true;
+      nav.classList.add('open');
+      document.body.classList.add('menu-open');
+      burger.setAttribute('aria-expanded','true');
+      syncInert();
+      close.focus();
+    }
+    function shut(returnFocus){
+      isOpen=false;
+      nav.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded','false');
+      syncInert();
+      if(returnFocus!==false)burger.focus();
+    }
+
+    burger.addEventListener('click',open);
+    close.addEventListener('click',function(){shut();});
+    scrim.addEventListener('click',function(){shut();});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){shut(false);});});
+
+    document.addEventListener('keydown',function(e){
+      if(!isOpen)return;
+      if(e.key==='Escape'){shut();return;}
+      if(e.key==='Tab'){
+        var f=focusables();
+        if(!f.length)return;
+        var first=f[0],last=f[f.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      }
+    });
+
+    // Re-sync when crossing the breakpoint (e.g. resize from mobile to desktop while open).
+    (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){
+      if(!mq.matches&&isOpen)shut(false);
+      syncInert();
+    });
+    syncInert();
+  })();
+</script>
+</body>
+</html>
