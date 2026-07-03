@@ -381,11 +381,19 @@
   @media(max-width:900px){
     .hero-bub{min-height:0;display:block;}
     .hero-bub .hero-grid{align-items:start;}
-    .hero-bub .hero-text{order:1;padding-bottom:36px;}
-    .hero-bubbles{order:2;min-height:390px;margin-bottom:70px;}
-    .hb-1{width:min(66%,330px);} .hb-2{width:min(42%,190px);} .hb-4{width:min(40%,180px);left:30%;} .hb-3{width:min(30%,140px);}
+    .hero-bub .hero-text{order:1;padding-bottom:32px;}
+    /* bubbles: clean 2x2 circle grid that always fits */
+    .hero-bubbles{order:2;position:static;min-height:0;margin:0 0 44px;display:grid;grid-template-columns:1fr 1fr;gap:16px;justify-items:center;align-items:center;}
+    .hero-bubbles .hb{position:static;inset:auto;top:auto;left:auto;right:auto;bottom:auto;width:100%;max-width:236px;aspect-ratio:1/1;border-radius:50%;margin:0;}
   }
-  @media(max-width:480px){ .hero-bubbles{min-height:330px;} }
+  @media(max-width:560px){
+    /* compact stats so all three fit */
+    .hero-bub .s-ic{display:none;}
+    .stat{padding-right:14px;margin-right:14px;}
+    .stat:last-child{padding-right:0;margin-right:0;border-right:none;}
+    .stat .num{font-size:30px;}
+  }
+  @media(max-width:400px){ .hero-bubbles .hb{max-width:180px;} }
 
   /* ---------- Large-monitor scaling (adapt to wide/32" screens) ---------- */
   @media (min-width:1600px){ :root{ --maxw:1440px; } }
