@@ -1,0 +1,54 @@
+{
+  "freshDays": 21,
+  "articles": [
+    {
+      "slug": "harmonia",
+      "title": "HARMONIA: Η νέα ψηφιακή πλατφόρμα για την προστασία του Πειραιά",
+      "category": "Smart Cities",
+      "author": "City Talks",
+      "date": "2026-06-29",
+      "url": "arthro-eksypnoi-dimoi.html",
+      "matchText": "HARMONIA"
+    },
+    {
+      "slug": "pep-attikis-60-65",
+      "title": "ΠΕΠ Αττικής — Επιδότηση έως 60-65%",
+      "category": "Opinions",
+      "author": "City Talks",
+      "date": "2025-06-06",
+      "url": "arthro-poleodomia.html"
+    },
+    {
+      "slug": "diaxeirisi-nerou",
+      "title": "Διαχείριση Νερού",
+      "category": "Opinions",
+      "author": "Πάττη Πασχαλίδου",
+      "date": "2025-02-09",
+      "url": "arthro-poleodomia.html"
+    },
+    {
+      "slug": "eksypnoi-dimoi-psifiaki-dimosia-ygeia",
+      "title": "Έξυπνοι Δήμοι & Ψηφιακή Δημόσια Υγεία",
+      "category": "Smart Cities",
+      "author": "Ιωάννης Καραγιάννης",
+      "date": "2025-01-08",
+      "url": "arthro-eksypnoi-dimoi.html"
+    },
+    {
+      "slug": "poleodomia-kai-dimoi",
+      "title": "Πολεοδομία και Δήμοι",
+      "category": "Opinions",
+      "author": "Θεοδόσης Χατζηιωαννίδης",
+      "date": "2024-12-31",
+      "url": "arthro-poleodomia.html"
+    },
+    {
+      "slug": "telos-stin-tafi-aporrimmatwn",
+      "title": "Τέλος στην ταφή απορριμμάτων",
+      "category": "Smart Cities",
+      "author": "Δημήτρης Πατσιαρίκας",
+      "date": "2024-05-01",
+      "url": "arthro-eksypnoi-dimoi.html"
+    }
+  ]
+}

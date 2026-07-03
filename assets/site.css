@@ -337,3 +337,22 @@
   .pod-ep a.pe-link{display:flex;align-items:center;gap:16px;width:100%;color:inherit;}
   .pod-ep a.pe-link:hover .pe-t{color:var(--accent);}
   .pod-ep a.pe-link:hover .pod-play{background:var(--accent);}
+
+  /* ---------- "ΝΕΟ ΑΡΘΡΟ" banner + chip ---------- */
+  .latest-banner{background:var(--paper);border-bottom:1px solid var(--ink);overflow:hidden;animation:lbIn .45s ease;}
+  @keyframes lbIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+  .latest-banner.lb-out{transition:opacity .3s,height .3s,padding .3s;opacity:0;height:0!important;}
+  .lb-in{display:flex;align-items:center;gap:14px;min-height:46px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap;}
+  .lb-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto;animation:lbPulse 1.6s ease-out infinite;}
+  @keyframes lbPulse{0%{box-shadow:0 0 0 0 rgba(108,44,145,.45);}100%{box-shadow:0 0 0 9px rgba(108,44,145,0);}}
+  .lb-k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);white-space:nowrap;}
+  .lb-t{font-family:var(--serif);font-weight:600;font-size:15.5px;line-height:1.25;color:var(--ink);flex:1 1 260px;min-width:0;}
+  .lb-t:hover{color:var(--accent);}
+  .lb-a{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap;}
+  .lb-go{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-weight:600;font-size:13px;color:var(--accent);white-space:nowrap;border-bottom:1.5px solid var(--accent);padding-bottom:1px;}
+  .lb-go svg{width:14px;height:14px;}
+  .lb-x{background:none;border:none;color:var(--ink-mute);font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;flex:0 0 auto;}
+  .lb-x:hover{color:var(--ink);}
+  @media(max-width:680px){ .lb-a{display:none;} .lb-t{font-size:14.5px;} }
+  @media(prefers-reduced-motion:reduce){ .latest-banner{animation:none;} .lb-dot{animation:none;} }
+  .new-chip{display:inline-block;vertical-align:middle;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--white);background:var(--accent);padding:2px 7px 1px;border-radius:2px;margin-left:8px;transform:translateY(-2px);}
