@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ο Πράσινος Τουρισμός ως μοχλός τοπικής ανάπτυξης | CITY TALKS</title>
+<meta name="description" content="Ο Δήμος Δίου-Ολύμπου, στους πρόποδες του μυθικού Ολύμπου, υλοποιεί δράσεις Πράσινου Τουρισμού: έξυπνα συστήματα μέτρησης αέρα, ηλεκτρικά ποδήλατα, κυκλική οικονομία και το πρόγραμμα CLIMAAX. Άρθρο του Δημήτρη Πατσιαρίκα." />
+<link rel="icon" type="image/png" href="public/logo/city-talks-mark-purple.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  /* ---------- ARTICLE PAGE (page-scoped) ---------- */
+  .art-bc{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);padding:22px 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .art-bc a{color:var(--ink-mute);transition:color .15s;}
+  .art-bc a:hover{color:var(--accent);}
+  .art-bc .sep{color:var(--line-strong);opacity:.5;}
+  .art-bc .cur{color:var(--ink);}
+
+  .art-head{max-width:780px;margin:0 auto;padding:clamp(28px,4vw,46px) 0 clamp(26px,3vw,36px);border-bottom:1px solid var(--line);}
+  .art-head .kicker{margin-bottom:18px;}
+  .art-title{font-family:var(--serif);font-size:clamp(38px,6vw,70px);font-weight:700;line-height:1.0;letter-spacing:-.025em;margin:0 0 16px;}
+  .art-deck{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.4vw,27px);color:var(--ink-soft);line-height:1.32;margin:0 0 28px;max-width:30ch;}
+  .art-byline{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .art-byline img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid var(--line);filter:grayscale(.3) contrast(1.05);flex-shrink:0;}
+  .art-byline .ab-name{font-family:var(--sans);font-weight:700;font-size:15.5px;line-height:1.2;}
+  .art-byline .ab-name a:hover{color:var(--accent);}
+  .art-byline .ab-meta{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:4px;}
+  .art-byline .ab-meta .ab-read{color:var(--accent);}
+
+  .art-hero{margin:clamp(30px,4vw,46px) 0 0;}
+  .art-hero figure{margin:0;border:1px solid var(--line);overflow:hidden;background:var(--ink);}
+  .art-hero img{width:100%;height:clamp(300px,38vw,660px);object-fit:cover;filter:contrast(1.04) saturate(.94) sepia(.06);}
+  .art-hero figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);padding:11px 2px 0;}
+
+  .art-body{max-width:684px;margin:0 auto;padding:clamp(34px,4vw,52px) 0 0;}
+  .art-body p{font-family:var(--serif);font-size:19px;line-height:1.72;color:var(--ink);margin:0 0 1.35em;letter-spacing:-.003em;}
+  .art-body p.dropcap-art::first-letter{
+    font-family:var(--serif);font-weight:700;float:left;font-size:84px;line-height:.66;
+    padding:8px 12px 0 0;color:var(--accent);
+  }
+  .art-pull{margin:clamp(30px,4vw,46px) 0;padding:6px 0 6px clamp(20px,3vw,32px);border-left:3px solid var(--accent);}
+  .art-pull p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(23px,3vw,30px);line-height:1.28;color:var(--ink);margin:0;letter-spacing:-.015em;}
+  blockquote.art-q{margin:clamp(26px,3vw,38px) 0;padding:0;}
+  blockquote.art-q p{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.4vw,24px);line-height:1.4;color:var(--accent-dark);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin:0;}
+
+  /* author bio box */
+  .art-bio{max-width:780px;margin:clamp(46px,5vw,68px) auto 0;border:1px solid var(--ink);background:var(--paper-2);padding:clamp(26px,3.4vw,38px);display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,30px);align-items:start;}
+  .art-bio .bio-port img{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid var(--accent);filter:grayscale(.35) contrast(1.06) sepia(.1);}
+  .art-bio .bio-kick{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:9px;}
+  .art-bio .bio-name{font-family:var(--serif);font-size:clamp(24px,3vw,32px);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin:0 0 10px;}
+  .art-bio .bio-text{font-size:15px;line-height:1.62;color:var(--ink-soft);margin:0 0 18px;max-width:54ch;}
+  .art-bio .bio-link{font-family:var(--sans);font-weight:600;font-size:14px;color:var(--accent);display:inline-flex;align-items:center;gap:7px;transition:gap .2s;}
+  .art-bio .bio-link:hover{gap:12px;}
+  .art-bio .bio-link svg{width:15px;height:15px;}
+  @media(max-width:560px){.art-bio{grid-template-columns:1fr;text-align:left;}.art-bio .bio-port img{width:88px;height:88px;}}
+
+  /* related */
+  .art-rel{padding-top:clamp(48px,6vw,76px);}
+  .rel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--line);margin-top:30px;}
+  @media(max-width:820px){.rel-cards{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Μετάβαση στο περιεχόμενο</a>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-inner">
+      <div class="mast-edition">
+        <b>Ανεξάρτητη Επιθεώρηση</b><br />
+        Τοπική Αυτοδιοίκηση<br />
+        &amp; Έξυπνες Πόλεις
+      </div>
+      <a class="mast-logo" href="index.html" aria-label="City Talks — αρχική">
+        <img src="public/logo/city-talks-logo-purple.png" alt="City Talks — λογότυπο" />
+      </a>
+      <div class="mast-right">
+        <p class="mast-sub">«Ας μιλήσουμε για τους Δήμους.»</p>
+        <button class="burger" id="burger" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="navlinks">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STICKY NAV -->
+<nav class="mainnav" id="top">
+  <div class="wrap">
+    <a class="nav-scroll-logo" href="index.html" aria-label="City Talks">
+      <img src="public/logo/city-talks-mark-purple.png" alt="" /> City&nbsp;Talks
+    </a>
+    <div class="navlinks" id="navlinks">
+      <a href="opinions.html">Opinions</a>
+      <a href="smart-cities.html" aria-current="page">Smart Cities</a>
+      <a href="arthrografoi.html">Αρθρογράφοι</a>
+      <a href="steile-apopsi.html">Let's Talk</a>
+      <a href="podcasts.html">Podcasts</a>
+      <div class="nav-mobile-cta">
+        <a class="btn btn--accent" href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="nav-mobile-foot">info@city-talks.gr</div>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn--accent" href="steile-apopsi.html">
+        Στείλε άποψη
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+<button class="nav-close" id="navclose" aria-label="Κλείσιμο μενού">
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+</button>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+
+<!-- BREADCRUMB -->
+<div class="wrap">
+  <nav class="art-bc" aria-label="Διαδρομή">
+    <a href="index.html">Αρχική</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <a href="smart-cities.html">Smart Cities</a>
+    <span class="sep" aria-hidden="true">/</span>
+    <span class="cur">Ο Πράσινος Τουρισμός ως μοχλός τοπικής ανάπτυξης</span>
+  </nav>
+</div>
+
+<!-- ARTICLE HEADER -->
+<article>
+  <div class="wrap">
+    <header class="art-head">
+      <span class="kicker">Smart Cities</span>
+      <h1 class="art-title">Ο Πράσινος Τουρισμός ως μοχλός τοπικής ανάπτυξης</h1>
+      <p class="art-deck">Υιοθέτηση βέλτιστων πρακτικών για πράσινους δήμους</p>
+      <div class="art-byline">
+        <img src="public/guests/DimitrisPiatsarikas-002.jpg" alt="Δημήτρης Πατσιαρίκας" />
+        <div>
+          <div class="ab-name"><a href="arthrografoi.html">Δημήτρης Πατσιαρίκας</a></div>
+          <div class="ab-meta">Αντιδήμαρχος Δήμου Δίου-Ολύμπου &nbsp;·&nbsp; 29 Μαρτίου 2024 &nbsp;·&nbsp; <span class="ab-read">3′ ανάγνωση</span></div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="wrap">
+    <div class="art-hero">
+      <figure>
+        <img src="public/article-images/o-prasinos-tourismos-ws-moxlos-topikis-anaptyksis/dimos-dios.jpg" alt="Ο Πράσινος Τουρισμός ως μοχλός τοπικής ανάπτυξης" />
+        <figcaption>Ο Δήμος Δίου-Ολύμπου στους πρόποδες του μυθικού Ολύμπου.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="wrap">
+    <div class="art-body">
+      <p class="dropcap-art">Ο Δήμος Δίου-Ολύμπου, στους πρόποδες του μυθικού Ολύμπου, αποτελεί ένα μοναδικό προορισμό, συνδυάζοντας φυσική ομορφιά, πλούσια ιστορία και αυθεντική φιλοξενία.</p>
+
+      <p>Στο πλαίσιο της αδιαπραγμάτευτης δέσμευσής του για την προστασία του περιβάλλοντος και την προώθηση του αειφόρου τουρισμού, ο Δήμος υλοποιεί με συνέπεια και όραμα μια σειρά από πρωτοποριακές δράσεις, καθιστώντας τον έναν Δήμο που υλοποιεί δράσεις και Πρακτικές Πράσινου Τουρισμού.</p>
+
+      <blockquote class="art-q">
+        <p>Η υιοθέτηση βιώσιμων πρακτικών, η προστασία του περιβάλλοντος και η προώθηση της εναλλακτικής μετακίνησης αποτελούν στοιχεία που μπορούν να καταστήσουν τους τουριστικούς Δήμους «πράσινους» Δήμους που θα υλοποιούν στην πράξη δράσεις και παρεμβάσεις αειφόρου τουρισμού. Με τον τρόπο αυτό θα εγγυώνται την τοπική ανάπτυξη αλλά και υψηλή ποιότητα ζωής για τους κατοίκους και δημότες τους.</p>
+      </blockquote>
+
+      <p class="art-body-sub" style="font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin:2em 0 .6em;">Συγκεκριμένα, μεταξύ άλλων, έχουμε προχωρήσει</p>
+
+      <p class="art-body-sub" style="font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin:2em 0 .6em;">Εγκατάσταση έξυπνων συστημάτων μέτρησης ποιότητας αέρα</p>
+
+      <p>Ο Δήμος έχει ενταχθεί στο πρόγραμμα «ΨΗΦΙΑΚΟΣ ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΣ» του Υπουργείου Ψηφιακής Διακυβέρνησης, προτείνοντας την εγκατάσταση έξυπνων συστημάτων μέτρησης ποιότητας αέρα. Η πρωτοποριακή αυτή δράση θα συμβάλει στην καταγραφή και αξιολόγηση της ατμοσφαιρικής ρύπανσης, θέτοντας τα θεμέλια για στοχευμένες παρεμβάσεις προς όφελος της δημόσιας υγείας και του περιβάλλοντος. Η δράση ονομάζεται «OlympusLegacy» και αποτυπώνει την περιβαλλοντική διάσταση του μύθου του Ολύμπου και τη συνεισφορά του στον Πράσινο Τουρισμό.</p>
+
+      <p class="art-body-sub" style="font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin:2em 0 .6em;">Προμήθεια ηλεκτρικών ποδηλάτων</p>
+
+      <p>Ο Δήμος έχει λάβει έγκριση από το Υπουργείο Ψηφιακής Μεταρρύθμισης και έχει δημοπρατήσει την προμήθεια ηλεκτρικών ποδηλάτων. Η ενίσχυση της εναλλακτικής μετακίνησης θα περιορίσει δραστικά το ανθρακικό αποτύπωμα, προσφέροντας στους επισκέπτες μια φιλική προς το περιβάλλον εμπειρία εξερεύνησης της περιοχής.</p>
+
+      <div class="art-pull">
+        <p>Η ενίσχυση της εναλλακτικής μετακίνησης θα περιορίσει δραστικά το ανθρακικό αποτύπωμα του προορισμού.</p>
+      </div>
+
+      <p class="art-body-sub" style="font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin:2em 0 .6em;">Ορθές πρακτικές για αθλητικές δραστηριότητες σε προστατευόμενες περιοχές</p>
+
+      <p>Σε συνεργασία με τον OlympusMarathon, ο Δήμος συμμετέχει στο πρόγραμμα του Πράσινου Ταμείου, υιοθετώντας βέλτιστες πρακτικές για την οργάνωση αθλητικών δραστηριοτήτων στον Όλυμπο. Η δέσμευση για την προστασία του μοναδικού αυτού φυσικού τοπίου αποτελεί ύψιστη προτεραιότητα. Η υποστήριξη του εντελώς επιτυχημένου θεσμού του «OlympusMarathon», μαζί με τις Ορθές Πρακτικές, συμβάλλει στην εδραίωση του Πράσινου Τουρισμού στο Δήμο Δίου-Ολύμπου.</p>
+
+      <p class="art-body-sub" style="font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin:2em 0 .6em;">Πιλοτικό πρόγραμμα κάφε κάδου</p>
+
+      <p>Ο Δήμος πρωτοπορεί, υλοποιώντας ένα πιλοτικό πρόγραμμα κάφε κάδου σε όλες τις τουριστικές επιχειρήσεις εστίασης. Η πρωτοβουλία αυτή ενθαρρύνει την κυκλική οικονομία και τη μείωση των απορριμμάτων, συμβάλλοντας στην προστασία του περιβάλλοντος και στην καλλιέργεια περιβαλλοντικής συνείδησης.</p>
+
+      <p class="art-body-sub" style="font-family:var(--sans);font-weight:700;font-size:15px;letter-spacing:.02em;text-transform:uppercase;color:var(--accent);margin:2em 0 .6em;">Συμμετοχή στο πρόγραμμα CLIMAAX</p>
+
+      <p>Το <strong>CLIMAAX</strong> (CLIMAte risk and vulnerability Assessment framework and toolboX) είναι ένα τετραετές πρόγραμμα του Horizon Europe που θα παρέχει οικονομική, αναλυτική και πρακτική υποστήριξη για τη βελτίωση των περιφερειακών σχεδίων διαχείρισης κλιματικών και έκτακτων αναγκών. Στόχος του CLIMAAX είναι να συμβάλει στον εναρμονισμό και την ενοποίηση των πρακτικών αξιολόγησης κλιματικών κινδύνων, αφήνοντας μια κληρονομιά για μελλοντικές ευρωπαϊκές πρωτοβουλίες. Το έργο ξεκίνησε τον Ιανουάριο του 2023 και θα διαρκέσει έως τον Δεκέμβριο του 2026.</p>
+
+      <p><strong>Συνοψίζοντας,</strong> ο Δήμος Δίου-Ολύμπου, με όραμα, συνέπεια και καινοτόμες δράσεις, προσπαθεί να καινοτομήσει στον τομέα του πράσινου τουρισμού. Η υιοθέτηση βιώσιμων πρακτικών, η προστασία του περιβάλλοντος και η προώθηση της εναλλακτικής μετακίνησης αποτελούν στοιχεία που μπορούν να καταστήσουν τους τουριστικούς Δήμους «πράσινους» Δήμους που θα υλοποιούν στην πράξη δράσεις και παρεμβάσεις αειφόρου τουρισμού. Με τον τρόπο αυτό θα εγγυώνται την τοπική ανάπτυξη αλλά και υψηλή ποιότητα ζωής για τους κατοίκους και δημότες τους.</p>
+    </div>
+
+    <!-- AUTHOR BIO -->
+    <aside class="art-bio">
+      <div class="bio-port">
+        <img src="public/guests/DimitrisPiatsarikas-002.jpg" alt="Δημήτρης Πατσιαρίκας" />
+      </div>
+      <div class="bio-info">
+        <div class="bio-kick">Ο αρθρογράφος</div>
+        <h2 class="bio-name">Δημήτρης Πατσιαρίκας</h2>
+        <p class="bio-text">Αντιδήμαρχος Αποκομιδής, Πρασίνου, Ανάπτυξης &amp; Προγραμματισμού του Δήμου Δίου-Ολύμπου.</p>
+        <a class="bio-link" href="arthrografoi.html">Περισσότερα από την αρθρογραφία
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </aside>
+  </div>
+</article>
+
+<!-- RELATED ARTICLES -->
+<section class="sec art-rel">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker ink">Συνέχισε την ανάγνωση</span>
+        <h2 style="margin-top:10px;">Σχετικά άρθρα</h2>
+      </div>
+      <a class="seclink" href="smart-cities.html">Όλα τα άρθρα
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="rel-cards">
+      <article class="card">
+        <figure class="card-fig"><img src="public/featured/HealthData.jpg" alt="Έξυπνοι Δήμοι & Ψηφιακή Δημόσια Υγεία" /></figure>
+        <div class="card-body">
+          <span class="c-cat"><span class="kicker">Smart Cities</span></span>
+          <h3><a href="arthro-eksypnoi-dimoi.html">Έξυπνοι Δήμοι &amp; Ψηφιακή Δημόσια Υγεία</a></h3>
+          <p class="c-excerpt">Η τεχνολογία αναβαθμίζει τις υπηρεσίες δημόσιας υγείας — ΗΔΙΚΑ &amp; Ταμείο Ανάκαμψης.</p>
+          <div class="c-byline">
+            <img src="public/guests/Ioannis-Karagiannis-0.jpg" alt="Ιωάννης Καραγιάννης" />
+            <span class="nm">Ιωάννης Καραγιάννης</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <figure class="card-fig"><img src="public/article-images/telos-stin-tafi-aporrimmatwn/Sustainable-Waste-Management.jpg" alt="Τέλος στην ταφή απορριμμάτων" /></figure>
+        <div class="card-body">
+          <span class="c-cat"><span class="kicker">Smart Cities</span></span>
+          <h3><a href="arthro-telos-tafi.html">Τέλος στην ταφή απορριμμάτων</a></h3>
+          <p class="c-excerpt">Η Ελλάδα θάβει ~80% των απορριμμάτων της — επενδύσεις στη βιώσιμη διαχείριση τώρα.</p>
+          <div class="c-byline">
+            <img src="public/guests/DimitrisPiatsarikas-002.jpg" alt="Δημήτρης Πατσιαρίκας" />
+            <span class="nm">Δημήτρης Πατσιαρίκας</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <figure class="card-fig"><img src="public/article-images/harmonia/Harmonia-Press.jpg" alt="HARMONIA: Η νέα ψηφιακή πλατφόρμα για την προστασία του Πειραιά" /></figure>
+        <div class="card-body">
+          <span class="c-cat"><span class="kicker">Smart Cities</span></span>
+          <h3><a href="arthro-harmonia.html">HARMONIA: Η νέα ψηφιακή πλατφόρμα για την προστασία του Πειραιά</a></h3>
+          <p class="c-excerpt">Έργο «Ορίζοντας 2020»: κλιματική θωράκιση και προστασία της υγείας των κατοίκων του Πειραιά.</p>
+          <div class="c-byline">
+            <img src="public/logo/city-talks-mark-purple.png" alt="City Talks" />
+            <span class="nm">City Talks</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="public/logo/city-talks-logo-white.png" alt="City Talks" />
+        <p>Ανεξάρτητη επιθεώρηση Τοπικής Αυτοδιοίκησης &amp; Έξυπνων Πόλεων. Ας μιλήσουμε για τους Δήμους.</p>
+        <a class="foot-mail" href="mailto:info@city-talks.gr">
+          <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          info@city-talks.gr
+        </a>
+      </div>
+      <div class="foot-col">
+        <h5>Θεματικές</h5>
+        <a href="opinions.html">Opinions</a>
+        <a href="smart-cities.html">Smart Cities</a>
+        <a href="arthrografoi.html">Αρθρογράφοι</a>
+        <a href="podcasts.html">Podcasts</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επιθεώρηση</h5>
+        <a href="index.html">Αρχική</a>
+        <a href="opinions.html">Το τεύχος</a>
+        <a href="steile-apopsi.html">Newsletter</a>
+        <a href="steile-apopsi.html">Στείλε άποψη</a>
+      </div>
+      <div class="foot-col">
+        <h5>Επικοινωνία</h5>
+        <a href="mailto:info@city-talks.gr">info@city-talks.gr</a>
+        <a href="oroi-xrisis">Όροι χρήσης</a>
+        <a href="politiki-aporritou">Πολιτική απορρήτου</a>
+        <a href="cookies">Cookies</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="copy">© 2026 City Talks · city-talks.gr · Με την επιφύλαξη παντός δικαιώματος.</span>
+      <div class="foot-social">
+        <a href="https://www.facebook.com/citytalks.gr" aria-label="Facebook"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+        <a href="https://www.linkedin.com/company/city-talks-gr" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3zM5 10h3v9H5zM11 10h3v1.3c.5-.8 1.5-1.5 3-1.5 2.5 0 3 1.7 3 4V19h-3v-4c0-1-.4-1.7-1.4-1.7S14 14 14 15v4h-3z"/></svg></a>
+        <a href="https://x.com/citytalks_gr" aria-label="X"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3h3l-7 8 8 10h-6l-5-6-5 6H2l8-9L2 3h6l4 5z"/></svg></a>
+        <a href="mailto:info@city-talks.gr" aria-label="Email"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var burger=document.getElementById('burger');
+    var nav=document.getElementById('navlinks');
+    var close=document.getElementById('navclose');
+    var scrim=document.getElementById('scrim');
+    var isOpen=false;
+    var mq=window.matchMedia('(max-width:980px)');
+
+    // Make off-canvas panel unreachable to keyboard/SR when closed (only at mobile widths).
+    function syncInert(){
+      if(mq.matches && !isOpen){
+        nav.setAttribute('aria-hidden','true');
+        nav.setAttribute('inert','');
+      }else{
+        nav.removeAttribute('aria-hidden');
+        nav.removeAttribute('inert');
+      }
+    }
+
+    function focusables(){
+      return Array.prototype.slice.call(
+        nav.querySelectorAll('a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])')
+      ).concat([close]);
+    }
+
+    function open(){
+      isOpen=true;
+      nav.classList.add('open');
+      document.body.classList.add('menu-open');
+      burger.setAttribute('aria-expanded','true');
+      syncInert();
+      close.focus();
+    }
+    function shut(returnFocus){
+      isOpen=false;
+      nav.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded','false');
+      syncInert();
+      if(returnFocus!==false)burger.focus();
+    }
+
+    burger.addEventListener('click',open);
+    close.addEventListener('click',function(){shut();});
+    scrim.addEventListener('click',function(){shut();});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){shut(false);});});
+
+    document.addEventListener('keydown',function(e){
+      if(!isOpen)return;
+      if(e.key==='Escape'){shut();return;}
+      if(e.key==='Tab'){
+        var f=focusables();
+        if(!f.length)return;
+        var first=f[0],last=f[f.length-1];
+        if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      }
+    });
+
+    // Re-sync when crossing the breakpoint (e.g. resize from mobile to desktop while open).
+    (mq.addEventListener?mq.addEventListener.bind(mq,'change'):mq.addListener.bind(mq))(function(){
+      if(!mq.matches&&isOpen)shut(false);
+      syncInert();
+    });
+    syncInert();
+  })();
+</script>
+</body>
+</html>
