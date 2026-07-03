@@ -377,7 +377,7 @@
   .hero-bub .s-ic svg{width:19px;height:19px;}
   .hero-bub .stat{display:flex;align-items:center;}
   /* skyline line-art */
-  .hero-skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(96px,11vw,150px);color:var(--ink);opacity:.3;z-index:0;pointer-events:none;}
+  .hero-skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(84px,9vw,120px);z-index:0;pointer-events:none;opacity:.32;background:url("../public/skyline.svg") repeat-x left bottom;background-size:auto 100%;}
   @media(max-width:900px){
     .hero-bub{min-height:0;display:block;}
     .hero-bub .hero-grid{align-items:start;}
