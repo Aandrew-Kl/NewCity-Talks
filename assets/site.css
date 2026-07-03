@@ -386,3 +386,8 @@
     .hb-1{width:min(66%,330px);} .hb-2{width:min(42%,190px);} .hb-4{width:min(40%,180px);left:30%;} .hb-3{width:min(30%,140px);}
   }
   @media(max-width:480px){ .hero-bubbles{min-height:330px;} }
+
+  /* ---------- Large-monitor scaling (adapt to wide/32" screens) ---------- */
+  @media (min-width:1600px){ :root{ --maxw:1440px; } }
+  @media (min-width:2000px){ :root{ --maxw:1600px; } body{ font-size:18px; } }
+  @media (min-width:2560px){ :root{ --maxw:1760px; } }
