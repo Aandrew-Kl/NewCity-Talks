@@ -1,7 +1,15 @@
 /* City Talks — "Νέο άρθρο" banner + badges (static, data-driven from data/articles.json) */
 (function(){
   function ready(fn){document.readyState!=='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  function fitHero(){
+    var h=document.querySelector('.hero-bub'); if(!h) return;
+    if(window.innerWidth<=900){ h.style.minHeight=''; return; }
+    h.style.minHeight='0px';
+    var absTop=h.getBoundingClientRect().top+window.scrollY;
+    h.style.minHeight=Math.max(520,(window.innerHeight-absTop))+'px';
+  }
   ready(function(){
+    fitHero(); window.addEventListener('resize',fitHero);
     fetch('data/articles.json').then(function(r){return r.json();}).then(function(cfg){
       var arts=(cfg.articles||[]).slice().sort(function(a,b){return new Date(b.date)-new Date(a.date);});
       if(!arts.length) return;
@@ -37,11 +45,11 @@
         +'<a class="lb-go" href="'+latest.url+'">Διάβασέ το <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'
         +'<button class="lb-x" aria-label="Κλείσιμο ειδοποίησης">&times;</button>'
         +'</div>';
-      nav.insertAdjacentElement('afterend',b);
+      nav.insertAdjacentElement('afterend',b); fitHero();
       b.querySelector('.lb-x').addEventListener('click',function(){
         try{localStorage.setItem('ct_seen_'+latest.slug,'1');}catch(e){}
         b.style.height=b.offsetHeight+'px'; requestAnimationFrame(function(){ b.classList.add('lb-out'); });
-        setTimeout(function(){b.remove();},350);
+        setTimeout(function(){b.remove(); fitHero();},360);
       });
     }).catch(function(){});
   });
