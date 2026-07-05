@@ -373,9 +373,6 @@
   .hb-3{top:60%;right:3%;width:min(30%,182px);aspect-ratio:1/1;border-radius:50%;}
   /* icon stats */
   .hero-bub .hero-stats{position:relative;z-index:1;}
-  .hero-bub .s-ic{width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;color:var(--accent);margin-right:12px;flex:0 0 auto;}
-  .hero-bub .s-ic svg{width:19px;height:19px;}
-  .hero-bub .stat{display:flex;align-items:center;}
   /* skyline line-art */
   .hero-skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(84px,9vw,120px);z-index:0;pointer-events:none;opacity:.32;background:url("../public/skyline.svg") repeat-x left bottom;background-size:auto 100%;}
   @media(max-width:900px){
@@ -388,7 +385,6 @@
   }
   @media(max-width:560px){
     /* compact stats so all three fit */
-    .hero-bub .s-ic{display:none;}
     .stat{padding-right:14px;margin-right:14px;}
     .stat:last-child{padding-right:0;margin-right:0;border-right:none;}
     .stat .num{font-size:30px;}
