@@ -6,9 +6,11 @@
       "title": "HARMONIA: Η νέα ψηφιακή πλατφόρμα για την προστασία του Πειραιά",
       "category": "Smart Cities",
       "author": "City Talks",
-      "date": "2026-06-29",
-      "url": "arthro-eksypnoi-dimoi.html",
-      "matchText": "HARMONIA"
+      "date": "2025-12-10",
+      "url": "arthro-harmonia.html",
+      "matchText": "HARMONIA",
+      "image": "public/article-images/harmonia/Harmonia-Press.jpg",
+      "excerpt": "Έργο «Ορίζοντας 2020»: μια εξελιγμένη ψηφιακή πλατφόρμα θωρακίζει τον Πειραιά απέναντι στις κλιματικές και περιβαλλοντικές πιέσεις, προστατεύοντας την πόλη και την υγεία των κατοίκων."
     },
     {
       "slug": "pep-attikis-60-65",
@@ -16,7 +18,9 @@
       "category": "Opinions",
       "author": "City Talks",
       "date": "2025-06-06",
-      "url": "arthro-poleodomia.html"
+      "url": "arthro-pep-attikis.html",
+      "image": "public/article-images/pep-attikis-60-65/unnamed-1.jpg",
+      "excerpt": "Ενίσχυση παραγωγικών επενδύσεων για την προσαρμογή, τον εκσυγχρονισμό και την ανάκαμψη, με επιδότηση που φτάνει έως και 60-65%."
     },
     {
       "slug": "diaxeirisi-nerou",
@@ -24,7 +28,9 @@
       "category": "Opinions",
       "author": "Πάττη Πασχαλίδου",
       "date": "2025-02-09",
-      "url": "arthro-poleodomia.html"
+      "url": "arthro-diaxeirisi-nerou.html",
+      "image": "public/article-images/diaxeirisi-nerou/DiaxeirisiNerou.jpg",
+      "excerpt": "Οι υδάτινοι πόροι ως παράγοντας ανάπτυξης και ποιότητας ζωής — ένα στοίχημα που δεν πρέπει να χαθεί."
     },
     {
       "slug": "eksypnoi-dimoi-psifiaki-dimosia-ygeia",
@@ -32,7 +38,9 @@
       "category": "Smart Cities",
       "author": "Ιωάννης Καραγιάννης",
       "date": "2025-01-08",
-      "url": "arthro-eksypnoi-dimoi.html"
+      "url": "arthro-eksypnoi-dimoi.html",
+      "image": "public/featured/HealthData.jpg",
+      "excerpt": "Η αξιοποίηση της τεχνολογίας αναβαθμίζει τις υπηρεσίες δημόσιας υγείας — ΗΔΙΚΑ και Ταμείο Ανάκαμψης."
     },
     {
       "slug": "poleodomia-kai-dimoi",
@@ -40,7 +48,9 @@
       "category": "Opinions",
       "author": "Θεοδόσης Χατζηιωαννίδης",
       "date": "2024-12-31",
-      "url": "arthro-poleodomia.html"
+      "url": "arthro-poleodomia.html",
+      "image": "public/featured/poleodomia.jpg",
+      "excerpt": "Τοπική υπόθεση η ανάπτυξη: η απόφαση του ΣτΕ για τον ΝΟΚ και η υποστελέχωση των Υπηρεσιών Δόμησης."
     },
     {
       "slug": "telos-stin-tafi-aporrimmatwn",
@@ -48,7 +58,9 @@
       "category": "Smart Cities",
       "author": "Δημήτρης Πατσιαρίκας",
       "date": "2024-05-01",
-      "url": "arthro-eksypnoi-dimoi.html"
+      "url": "arthro-telos-tafi.html",
+      "image": "public/article-images/telos-stin-tafi-aporrimmatwn/Sustainable-Waste-Management.jpg",
+      "excerpt": "Η Ελλάδα θάβει ~80% των απορριμμάτων της — επενδύσεις στη βιώσιμη διαχείριση τώρα."
     }
   ]
 }

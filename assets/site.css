@@ -338,29 +338,28 @@
   .pod-ep a.pe-link:hover .pe-t{color:var(--accent);}
   .pod-ep a.pe-link:hover .pod-play{background:var(--accent);}
 
-  /* ---------- "ΝΕΟ ΑΡΘΡΟ" banner + chip ---------- */
-  .latest-banner{background:var(--accent);border-bottom:3px solid var(--ink);overflow:hidden;animation:lbIn .5s ease;}
-  @keyframes lbIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:none;}}
-  .latest-banner.lb-out{transition:opacity .3s,height .3s,padding .3s;opacity:0;height:0!important;}
-  .lb-in{display:flex;align-items:center;gap:16px;min-height:64px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap;}
-  .lb-dot{width:9px;height:9px;border-radius:50%;background:var(--white);flex:0 0 auto;animation:lbPulse 1.6s ease-out infinite;}
-  @keyframes lbPulse{0%{box-shadow:0 0 0 0 rgba(255,253,249,.55);}100%{box-shadow:0 0 0 10px rgba(255,253,249,0);}}
-  .lb-k{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--white);background:rgba(22,19,15,.25);padding:5px 10px;border-radius:2px;white-space:nowrap;}
-  .lb-t{font-family:var(--serif);font-weight:600;font-size:clamp(16px,1.6vw,21px);line-height:1.22;color:var(--white);flex:1 1 300px;min-width:0;}
-  .lb-t:hover{text-decoration:underline;text-underline-offset:3px;}
-  .lb-a{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,253,249,.75);white-space:nowrap;}
-  .lb-go{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:13.5px;color:var(--accent);background:var(--white);border:1.5px solid var(--white);padding:.55em 1.1em;border-radius:2px;white-space:nowrap;transition:background .15s,color .15s;}
-  .lb-go:hover{background:transparent;color:var(--white);}
-  .lb-go svg{width:14px;height:14px;}
-  .lb-x{background:none;border:none;color:rgba(255,253,249,.8);font-size:24px;line-height:1;cursor:pointer;padding:2px 6px;flex:0 0 auto;}
-  .lb-x:hover{color:var(--white);}
-  @media(max-width:680px){ .lb-a{display:none;} .lb-t{font-size:15.5px;} .lb-in{gap:12px;} }
-  @media(prefers-reduced-motion:reduce){ .latest-banner{animation:none;} .lb-dot{animation:none;} }
+  /* ---------- «Νέο άρθρο» ως κάρτα-περιεχόμενο (μετά το hero) + «ΝΕΟ» chip ---------- */
+  .new-lead{border-top:1px solid var(--line-strong);background:var(--paper-2);}
+  .ncard{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:clamp(22px,3.5vw,48px);align-items:center;padding:clamp(24px,3vw,36px) 0;text-decoration:none;}
+  .ncard-fig{margin:0;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--ink);}
+  .ncard-fig img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+  .ncard:hover .ncard-fig img{transform:scale(1.04);}
+  .ncard-kick{display:inline-flex;align-items:center;gap:8px;color:var(--accent);}
+  .ncard-kick .nl-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:0 0 auto;}
+  .ncard-title{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3vw,40px);line-height:1.06;letter-spacing:-.015em;margin:12px 0 10px;color:var(--ink);}
+  .ncard:hover .ncard-title{color:var(--accent);}
+  .ncard-ex{font-size:15.5px;line-height:1.55;color:var(--ink-soft);max-width:62ch;margin:0 0 18px;}
+  .ncard-foot{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .ncard-auth{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);}
+  .ncard-btn{white-space:nowrap;}
+  .ncard-btn svg{width:15px;height:15px;transition:transform .2s ease;}
+  .ncard:hover .ncard-btn svg{transform:translateX(3px);}
+  @media(max-width:680px){ .ncard{grid-template-columns:1fr;gap:16px;padding:22px 0;} .ncard-fig{aspect-ratio:16/9;} }
   .new-chip{display:inline-block;vertical-align:middle;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--white);background:var(--accent);padding:2px 7px 1px;border-radius:2px;margin-left:8px;transform:translateY(-2px);}
 
-  /* ---------- HERO: full-screen photo bubbles + skyline (homepage) ---------- */
+  /* ---------- HERO: full-screen photo bubbles (homepage) ---------- */
   .hero-bub{position:relative;overflow:hidden;border-bottom:3px double var(--ink);
-    min-height:calc(100vh - 150px);display:flex;flex-direction:column;justify-content:center;padding-bottom:clamp(104px,11vw,150px);}
+    min-height:calc(100vh - 150px);display:flex;flex-direction:column;justify-content:center;padding-bottom:clamp(40px,5vw,72px);}
   .hero-bub .wrap{width:100%;}
   .hero-bub .hero-grid{position:relative;z-index:1;align-items:center;gap:clamp(24px,3vw,54px);}
   .hero-bub .hero-text{border-right:none;padding:0;}
@@ -373,8 +372,6 @@
   .hb-3{top:60%;right:3%;width:min(30%,182px);aspect-ratio:1/1;border-radius:50%;}
   /* icon stats */
   .hero-bub .hero-stats{position:relative;z-index:1;}
-  /* skyline line-art */
-  .hero-skyline{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(84px,9vw,120px);z-index:0;pointer-events:none;opacity:.32;background:url("../public/skyline.svg") repeat-x left bottom;background-size:auto 100%;}
   @media(max-width:900px){
     .hero-bub{min-height:0;display:block;}
     .hero-bub .hero-grid{align-items:start;}

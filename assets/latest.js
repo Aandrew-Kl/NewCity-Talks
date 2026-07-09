@@ -1,4 +1,4 @@
-/* City Talks — "Νέο άρθρο" banner + badges (static, data-driven from data/articles.json) */
+/* City Talks — Το τελευταίο άρθρο ως κάρτα-περιεχόμενο μετά το hero (πάντα ορατή· «Νέο» + chips μόνο όταν ≤freshDays). Data από data/articles.json */
 (function(){
   function ready(fn){document.readyState!=='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
   function fitHero(){
@@ -15,42 +15,44 @@
       if(!arts.length) return;
       var latest=arts[0];
       var ageDays=(Date.now()-new Date(latest.date+'T00:00:00'))/864e5;
-      if(ageDays<0||ageDays>(cfg.freshDays||21)) return;      // τίποτα φρέσκο → σιωπή
+      var fresh=(ageDays>=0 && ageDays<=(cfg.freshDays||21));   // «Νέο» μόνο αν όντως πρόσφατο
 
-      /* — «ΝΕΟ» chip στις κάρτες που ταιριάζουν στον τίτλο — */
-      var norm=function(s){return (s||'').toLowerCase().replace(/\s+/g,' ').trim();};
-      var key=norm(latest.matchText||latest.title);
-      document.querySelectorAll('main a, main h3, main h4').forEach(function(el){
-        if(el.querySelector('img'))return;
-        if(norm(el.textContent).indexOf(key)!==0)return;
-        if(el.querySelector('.new-chip')||el.closest('.latest-banner'))return;
-        var inner=el.querySelector('a,h3,h4');            // προτίμησε το βαθύτερο στοιχείο-τίτλο
-        if(inner&&norm(inner.textContent).indexOf(key)===0)return;
-        var c=document.createElement('span'); c.className='new-chip'; c.textContent='Νεο';
-        var blk=el.firstElementChild;                      // βάλε το chip δίπλα στον τίτλο, πριν από meta blocks
-        if(blk){ el.insertBefore(c,blk); el.insertBefore(document.createTextNode(' '),c); }
-        else { el.appendChild(document.createTextNode(' ')); el.appendChild(c); }
-      });
+      /* — «ΝΕΟ» chip στις κάρτες που ταιριάζουν στον τίτλο (μόνο όταν είναι φρέσκο) — */
+      if(fresh){
+        var norm=function(s){return (s||'').toLowerCase().replace(/\s+/g,' ').trim();};
+        var key=norm(latest.matchText||latest.title);
+        document.querySelectorAll('main a, main h3, main h4').forEach(function(el){
+          if(el.querySelector('img'))return;
+          if(norm(el.textContent).indexOf(key)!==0)return;
+          if(el.querySelector('.new-chip'))return;
+          var inner=el.querySelector('a,h3,h4');            // προτίμησε το βαθύτερο στοιχείο-τίτλο
+          if(inner&&norm(inner.textContent).indexOf(key)===0)return;
+          var c=document.createElement('span'); c.className='new-chip'; c.textContent='Νεο';
+          var blk=el.firstElementChild;                      // βάλε το chip δίπλα στον τίτλο, πριν από meta blocks
+          if(blk){ el.insertBefore(c,blk); el.insertBefore(document.createTextNode(' '),c); }
+          else { el.appendChild(document.createTextNode(' ')); el.appendChild(c); }
+        });
+      }
 
-      /* — banner κάτω από το sticky nav (αν δεν έχει κλείσει για αυτό το slug) — */
-      try{ if(localStorage.getItem('ct_seen_'+latest.slug)==='1') return; }catch(e){}
-      var nav=document.querySelector('.mainnav'); if(!nav) return;
-      var b=document.createElement('div');
-      b.className='latest-banner'; b.setAttribute('role','region'); b.setAttribute('aria-label','Νέο άρθρο');
-      b.innerHTML='<div class="wrap lb-in">'
-        +'<span class="lb-dot" aria-hidden="true"></span>'
-        +'<span class="lb-k">Νέο άρθρο · '+latest.category+'</span>'
-        +'<a class="lb-t" href="'+latest.url+'">'+latest.title+'</a>'
-        +'<span class="lb-a">'+latest.author+'</span>'
-        +'<a class="lb-go" href="'+latest.url+'">Διάβασέ το <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>'
-        +'<button class="lb-x" aria-label="Κλείσιμο ειδοποίησης">&times;</button>'
-        +'</div>';
-      nav.insertAdjacentElement('afterend',b); fitHero();
-      b.querySelector('.lb-x').addEventListener('click',function(){
-        try{localStorage.setItem('ct_seen_'+latest.slug,'1');}catch(e){}
-        b.style.height=b.offsetHeight+'px'; requestAnimationFrame(function(){ b.classList.add('lb-out'); });
-        setTimeout(function(){b.remove(); fitHero();},360);
-      });
+      /* — Το τελευταίο άρθρο ως ΠΕΡΙΕΧΟΜΕΝΟ: κάρτα με κουμπί «Διάβασέ το», πάντα ορατή, αμέσως μετά το hero — */
+      var hero=document.querySelector('.hero'); if(!hero) return;
+      if(document.querySelector('.new-lead')) return;                 // μην μπει 2 φορές
+      var img=latest.image||'public/featured/poleodomia.jpg';
+      var kick=fresh
+        ? '<span class="nl-dot" aria-hidden="true"></span> Νέο άρθρο · '+latest.category
+        : 'Τελευταίο άρθρο · '+latest.category;
+      var sec=document.createElement('section');
+      sec.className='new-lead'; sec.setAttribute('aria-label',fresh?'Νέο άρθρο':'Τελευταίο άρθρο');
+      sec.innerHTML='<div class="wrap"><a class="ncard" href="'+latest.url+'">'
+        +'<figure class="ncard-fig"><img src="'+img+'" alt="'+latest.title+'" loading="lazy"/></figure>'
+        +'<div class="ncard-body">'
+          +'<span class="kicker ncard-kick">'+kick+'</span>'
+          +'<h2 class="ncard-title">'+latest.title+'</h2>'
+          +(latest.excerpt?'<p class="ncard-ex">'+latest.excerpt+'</p>':'')
+          +'<div class="ncard-foot"><span class="ncard-auth">'+latest.author+'</span>'
+          +'<span class="btn btn--accent ncard-btn">Διάβασέ το <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>'
+        +'</div></a></div>';
+      hero.insertAdjacentElement('afterend',sec);
     }).catch(function(){});
   });
 })();
