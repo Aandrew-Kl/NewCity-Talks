@@ -155,8 +155,8 @@
   .sec-head .seclink svg{width:14px;height:14px;}
 
   /* ---------- LEAD + GRID ---------- */
-  .lead-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(28px,4vw,52px);}
-  .lead{}
+  .lead-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:clamp(30px,3.4vw,58px);}
+  .lead{border-right:1px solid var(--line);padding-right:clamp(26px,2.8vw,54px);}
   .lead-figure{position:relative;margin-bottom:22px;overflow:hidden;border:1px solid var(--line);}
   .lead-figure img{width:100%;height:clamp(280px,38vw,480px);object-fit:cover;filter:contrast(1.02) saturate(1.03);transition:transform .6s ease;}
   .lead:hover .lead-figure img{transform:scale(1.03);}
@@ -189,7 +189,7 @@
   .ix .ix-auth{font-size:13px;color:var(--ink-mute);}
 
   @media(max-width:980px){.lead-body{column-count:1;}}
-  @media(max-width:880px){.lead-grid{grid-template-columns:1fr;}}
+  @media(max-width:880px){.lead-grid{grid-template-columns:1fr;}.lead{border-right:none;padding-right:0;}}
 
   /* ---------- FEATURED CARD GRID ---------- */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--line);}
